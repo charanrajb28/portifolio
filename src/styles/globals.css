@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    --light: #f4f4ee;
+    --accent: #d55e42;
+    --dark: #121212;
+    --text-muted: #666666;
+    --card-bg: #e8e8dc;
+    --card-bg-light: #f7f7f0;
+    --card-blue: #dce7eb;
+    --card-green: #e7ebdce3;
+    --card-grey: #e9e9e9;
+    --stat-cyan: #dce7eb;
+    --stat-teal: #dcebe7;
+    --stat-blue: #dce7eb;
+    --header-glass: rgba(255, 255, 255, 0.4);
+  }
+
+  body {
+    background-color: var(--light);
+    color: var(--dark);
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-bold tracking-tight leading-none;
+  }
+}
+
+@layer components {
+  /* You can add custom component classes here if needed */
+}
+
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 1px var(--dark);
+    color: transparent;
+  }
+  
+  .border-subtle {
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--light); }
+  ::-webkit-scrollbar-thumb { background: #d1d1c1; border-radius: 10px; }
+  
+  .grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .font-serif-italic {
+    /* Changed this from Playfair Display to Outfit to ensure font consistency as requested, using normal italic instead */
+    font-family: 'Outfit', sans-serif;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .bg-card-blue { background-color: var(--card-blue); }
+  .bg-card-green { background-color: var(--card-green); }
+  .bg-card-grey { background-color: var(--card-grey); }
+  .bg-stat-cyan { background-color: var(--stat-cyan); }
+  .bg-stat-teal { background-color: var(--stat-teal); }
+  .bg-stat-blue { background-color: var(--stat-blue); }
+}
