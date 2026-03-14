@@ -39,6 +39,32 @@ export default function Home() {
     return () => clearInterval(timer)
   }, [])
 
+  const [result, setResult] = useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending...");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "b6d87926-1570-4cdc-bbc5-a894b3bced0c");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
+      setTimeout(() => setResult(""), 5000);
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -146,13 +172,15 @@ export default function Home() {
                     <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] opacity-30">Connect</span>
                     <div className="flex gap-4">
                       {[
-                        { id: 'GH', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg> },
-                        { id: 'LI', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.154z" /></svg> },
-                        { id: 'X', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg> }
+                        { id: 'GH', url: 'https://github.com/charanrajb28', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg> },
+                        { id: 'LI', url: 'https://www.linkedin.com/in/charan-raj-a315ab251/', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.154z" /></svg> },
+                        { id: 'X', url: 'https://x.com/charanraj282004', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg> }
                       ].map(social => (
                         <motion.a
                           key={social.id}
-                          href="#"
+                          href={social.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           whileHover={{ y: -5, scale: 1.1, backgroundColor: 'var(--accent)', color: 'white' }}
                           whileTap={{ scale: 0.9 }}
                           className="w-9 h-9 md:w-10 md:h-10 border border-black/5 rounded-full flex items-center justify-center text-black/40 transition-all cursor-pointer bg-white shadow-[0_5px_15px_rgba(0,0,0,0.05)] hover:shadow-premium hover:border-accent/10"
@@ -847,11 +875,11 @@ export default function Home() {
                     <span className="text-[9px] font-black uppercase tracking-widest opacity-20">Digital_Presence</span>
                     <div className="flex flex-col gap-4">
                       {[
-                        { name: 'GitHub', id: 'gh-link', label: 'Source_Control' },
-                        { name: 'LinkedIn', id: 'li-link', label: 'Network_Professional' },
-                        { name: 'Twitter', id: 'tw-link', label: 'Public_Broadcast' }
+                        { name: 'GitHub', url: 'https://github.com/charanrajb28', id: 'gh-link', label: 'Source_Control' },
+                        { name: 'LinkedIn', url: 'https://www.linkedin.com/in/charan-raj-a315ab251/', id: 'li-link', label: 'Network_Professional' },
+                        { name: 'X (Twitter)', url: 'https://x.com/charanraj282004', id: 'tw-link', label: 'Public_Broadcast' }
                       ].map(link => (
-                        <a key={link.id} href="#" className="group flex items-center justify-between py-4 border-b border-black/5 hover:border-accent transition-all duration-500">
+                        <a key={link.id} href={link.url} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between py-4 border-b border-black/5 hover:border-accent transition-all duration-500">
                           <div className="flex flex-col">
                             <span className="text-sm font-bold uppercase tracking-widest group-hover:text-accent transition-colors">{link.name}</span>
                             <span className="text-[7px] font-mono opacity-20 uppercase tracking-[0.3em] font-black translate-y-1 group-hover:translate-y-0 group-hover:opacity-60 transition-all">{link.label}</span>
@@ -867,18 +895,37 @@ export default function Home() {
                   {/* Terminal Form */}
                   <div className="flex flex-col gap-10">
                     <span className="text-[9px] font-black uppercase tracking-widest opacity-20">Inquiry_Buffer</span>
-                    <form className="space-y-8">
+                    <form onSubmit={onSubmit} className="space-y-8">
                       <div className="space-y-4">
                         <div className="relative group">
-                          <input type="text" placeholder="ID // EMAIL" className="w-full bg-transparent border-b-2 border-black/5 focus:border-accent py-4 outline-none text-xs font-black uppercase tracking-widest transition-all placeholder:opacity-20" />
+                          <input 
+                            type="email" 
+                            name="email"
+                            required
+                            placeholder="ID // EMAIL" 
+                            className="w-full bg-transparent border-b-2 border-black/5 focus:border-accent py-4 outline-none text-xs font-black uppercase tracking-widest transition-all placeholder:opacity-20" 
+                          />
                           <div className="absolute top-0 right-0 text-[7px] font-mono opacity-0 group-focus-within:opacity-30 uppercase tracking-widest">Required</div>
                         </div>
                         <div className="relative group">
-                          <textarea rows="3" placeholder="BRIEF..." className="w-full bg-transparent border-b-2 border-black/5 focus:border-accent py-4 outline-none text-xs font-black uppercase tracking-widest transition-all placeholder:opacity-20 resize-none" />
+                          <textarea 
+                            name="message"
+                            required
+                            rows="3" 
+                            placeholder="BRIEF..." 
+                            className="w-full bg-transparent border-b-2 border-black/5 focus:border-accent py-4 outline-none text-xs font-black uppercase tracking-widest transition-all placeholder:opacity-20 resize-none" 
+                          />
                           <div className="absolute top-0 right-0 text-[7px] font-mono opacity-0 group-focus-within:opacity-30 uppercase tracking-widest">Message_Body</div>
                         </div>
                       </div>
-                      <button type="button" className="group flex items-center gap-6 py-6 px-10 bg-black text-white rounded-xl hover:bg-accent transition-all duration-500 hover:scale-[1.02] shadow-2xl">
+                      
+                      {result && (
+                        <div className={`text-[10px] font-mono font-bold uppercase tracking-widest ${result.includes('Successfully') ? 'text-green-500' : 'text-accent'}`}>
+                          {result}
+                        </div>
+                      )}
+
+                      <button type="submit" className="group flex items-center gap-6 py-6 px-10 bg-black text-white rounded-xl hover:bg-accent transition-all duration-500 hover:scale-[1.02] shadow-2xl disabled:opacity-50" disabled={result === "Sending..."}>
                         <span className="text-[10px] font-black uppercase tracking-[0.4em]">Execute_Request</span>
                         <div className="w-8 h-px bg-white/30 group-hover:w-12 transition-all"></div>
                       </button>
@@ -953,12 +1000,15 @@ export default function Home() {
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent opacity-80">Social Hub</span>
                 <div className="flex gap-4">
                   {[
-                    { id: 'GH', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg> },
-                    { id: 'LI', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.154z" /></svg> },
+                    { id: 'GH', url: 'https://github.com/charanrajb28', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg> },
+                    { id: 'LI', url: 'https://www.linkedin.com/in/charan-raj-a315ab251/', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.154z" /></svg> },
+                    { id: 'X', url: 'https://x.com/charanraj282004', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg> }
                   ].map(social => (
-                    <motion.a
-                      key={social.id}
-                      href="#"
+                    <motion.a 
+                      key={social.id} 
+                      href={social.url} 
+                      target="_blank"
+                      rel="noopener noreferrer"
                       whileHover={{ y: -5, scale: 1.1, backgroundColor: 'var(--accent)', color: 'white' }}
                       className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center bg-white/5 transition-all duration-300 shadow-sm text-white"
                     >
