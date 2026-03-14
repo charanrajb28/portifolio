@@ -1,11 +1,98 @@
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer, SiWebgl, SiNodedotjs, SiSocketdotio, SiGraphql, SiExpress, SiRedis, SiDocker, SiVercel, SiGithubactions, SiPostgresql, SiMongodb, SiPrisma, SiFirebase, SiSpringboot } from 'react-icons/si'
 import { FaAws } from 'react-icons/fa'
+import { useRef } from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger, useGSAP)
+}
 
 export default function Home() {
+  const mainContainer = useRef()
+
+  useGSAP(() => {
+    // Luxury Typography Reveal
+    const headings = gsap.utils.toArray('h2, h3, .luxury-text')
+    headings.forEach((heading) => {
+      gsap.from(heading, {
+        scrollTrigger: {
+          trigger: heading,
+          start: 'top 90%',
+          toggleActions: 'play none none none'
+        },
+        y: 60,
+        opacity: 0,
+        duration: 1.5,
+        ease: 'power4.out'
+      })
+    })
+
+    // Section Parallax/Reveal
+    const sections = gsap.utils.toArray('section')
+    sections.forEach((section) => {
+      gsap.from(section, {
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 85%',
+        },
+        opacity: 0,
+        y: 30,
+        duration: 1.2,
+        ease: 'expo.out'
+      })
+    })
+
+    // Hero Specific Luxury Entrance
+    gsap.from('.hero-reveal', {
+      y: 100,
+      opacity: 0,
+      stagger: 0.2,
+      duration: 2,
+      ease: 'power4.out',
+      delay: 0.5
+    })
+  }, { scope: mainContainer })
+
+  const Magnetic = ({ children }) => {
+    const magneticRef = useRef(null)
+
+    useGSAP(() => {
+      const xTo = gsap.quickTo(magneticRef.current, "x", { duration: 1, ease: "elastic.out(1, 0.3)" })
+      const yTo = gsap.quickTo(magneticRef.current, "y", { duration: 1, ease: "elastic.out(1, 0.3)" })
+
+      const handleMouseMove = (e) => {
+        const { clientX, clientY } = e
+        const { height, width, left, top } = magneticRef.current.getBoundingClientRect()
+        const x = clientX - (left + width / 2)
+        const y = clientY - (top + height / 2)
+        xTo(x * 0.35)
+        yTo(y * 0.35)
+      }
+
+      const handleMouseLeave = () => {
+        xTo(0)
+        yTo(0)
+      }
+
+      magneticRef.current.addEventListener("mousemove", handleMouseMove)
+      magneticRef.current.addEventListener("mouseleave", handleMouseLeave)
+
+      return () => {
+        if (magneticRef.current) {
+          magneticRef.current.removeEventListener("mousemove", handleMouseMove)
+          magneticRef.current.removeEventListener("mouseleave", handleMouseLeave)
+        }
+      }
+    }, { scope: magneticRef })
+
+    return <div ref={magneticRef}>{children}</div>
+  }
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -23,9 +110,23 @@ export default function Home() {
   }
 
   const [time, setTime] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    // Premium Preloader Duration
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false)
+    }, 2200)
+
+    // Hard reset scroll to top on reload for animation consistency
+    if (typeof window !== 'undefined') {
+      window.history.scrollRestoration = 'manual'
+      requestAnimationFrame(() => {
+        window.scrollTo(0, 0)
+      })
+    }
+
+    const clockTimer = setInterval(() => {
       const istTime = new Date().toLocaleTimeString('en-US', {
         timeZone: 'Asia/Kolkata',
         hour12: true,
@@ -36,7 +137,10 @@ export default function Home() {
       setTime(istTime)
     }, 1000)
 
-    return () => clearInterval(timer)
+    return () => {
+      clearTimeout(loadingTimer)
+      clearInterval(clockTimer)
+    }
   }, [])
 
   const [result, setResult] = useState("");
@@ -69,12 +173,44 @@ export default function Home() {
     <>
       <Head>
         <title>Charan Raj B | Full Stack Developer</title>
-        <meta name="description" content="High-end software engineering and development" />
+        <meta name="description" content="High-performance full-stack engineer and digital architect." />
       </Head>
+
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{
+              y: '-100%',
+              transition: { duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: 0.5 }
+            }}
+            className="fixed inset-0 z-[999] bg-[#0a0a0a] flex items-center justify-center overflow-hidden"
+          >
+            <div className="relative overflow-hidden p-10">
+              <motion.div
+                initial={{ y: 100 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+                className="text-white text-3xl md:text-5xl font-black uppercase tracking-tighter"
+              >
+                Charan Raj <span className="text-accent">B</span>
+              </motion.div>
+              <div className="mt-4 h-[1px] w-full bg-white/10 relative">
+                <motion.div
+                  initial={{ x: '-100%' }}
+                  animate={{ x: '100%' }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 bg-accent"
+                />
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="grain-overlay"></div>
 
-      <main className="min-h-screen">
+      <main ref={mainContainer} className="min-h-screen">
         {/* Navigation */}
         <header className="px-6 md:px-10 py-6 md:py-8 flex items-center justify-between sticky top-0 z-50 pointer-events-none">
           <motion.div
@@ -97,14 +233,15 @@ export default function Home() {
                   { name: 'Experience', id: 'experience' },
                   { name: 'Connect', id: 'connect' }
                 ].map((link, i) => (
-                  <a
-                    key={link.name}
-                    href={`#${link.id}`}
-                    className="text-[9px] font-bold uppercase tracking-[0.4em] text-black hover:text-accent transition-all duration-300 hover:-translate-y-0.5"
-                    style={{ transitionDelay: `${i * 50}ms` }}
-                  >
-                    {link.name}
-                  </a>
+                  <Magnetic key={link.name}>
+                    <a
+                      href={`#${link.id}`}
+                      className="text-[9px] font-bold uppercase tracking-[0.4em] text-black hover:text-accent transition-all duration-300 hover:-translate-y-0.5"
+                      style={{ transitionDelay: `${i * 50}ms` }}
+                    >
+                      {link.name}
+                    </a>
+                  </Magnetic>
                 ))}
               </div>
 
@@ -145,11 +282,35 @@ export default function Home() {
                 </motion.div>
 
                 <motion.h1
-                  variants={item}
-                  className="text-[10vw] lg:text-[7vw] font-bold uppercase leading-[0.8] tracking-tighter mb-8 md:mb-10"
+                  variants={container}
+                  initial="hidden"
+                  whileInView="show"
+                  className="text-[10vw] lg:text-[7vw] font-bold uppercase leading-[0.8] tracking-tighter mb-8 md:mb-10 overflow-hidden"
                 >
-                  Charan Raj <span className="text-stroke">B</span><br />
-                  <span className="font-serif-italic text-accent normal-case tracking-normal block mt-2 md:mt-4 text-xl md:text-2xl lg:text-3xl">Full Stack Developer</span>
+                  {"Charan Raj ".split("").map((char, i) => (
+                    <motion.span
+                      key={i}
+                      variants={item}
+                      className="inline-block"
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      {char === " " ? "\u00A0" : char}
+                    </motion.span>
+                  ))}
+                  <motion.span
+                    variants={item}
+                    className="text-stroke inline-block"
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    B
+                  </motion.span>
+                  <br />
+                  <motion.span
+                    variants={item}
+                    className="font-serif-italic text-accent normal-case tracking-normal block mt-2 md:mt-4 text-xl md:text-2xl lg:text-3xl"
+                  >
+                    Full Stack Developer
+                  </motion.span>
                 </motion.h1>
 
                 <motion.div variants={item} className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12 max-w-xl">
@@ -167,8 +328,8 @@ export default function Home() {
                   </div>
                 </motion.div>
 
-                <motion.div variants={item} className="mt-12 md:mt-16 flex flex-col sm:flex-row sm:items-center gap-8 sm:space-x-12">
-                  <div className="flex flex-col space-y-4">
+                <motion.div variants={item} className="mt-12 md:mt-16 flex flex-col sm:flex-row sm:items-center gap-8 sm:gap-14">
+                  <div className="flex flex-col space-y-4 hero-reveal">
                     <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] opacity-30">Connect</span>
                     <div className="flex gap-4">
                       {[
@@ -192,8 +353,10 @@ export default function Home() {
                       ))}
                     </div>
                   </div>
-                  <div className="hidden sm:block w-[1px] h-20 bg-black/5"></div>
-                  <div className="flex flex-col space-y-4">
+
+                  <div className="hidden sm:block w-[1px] h-20 bg-black/5 hero-reveal"></div>
+
+                  <div className="flex flex-col space-y-4 hero-reveal">
                     <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] opacity-30">Status & Time</span>
                     <div className="flex flex-col space-y-2">
                       <div className="flex items-center space-x-3">
@@ -327,7 +490,10 @@ export default function Home() {
         <section id="about" className="px-6 md:px-10 py-24 md:py-32">
           <div className="flex flex-col lg:grid lg:grid-cols-12 lg:grid-rows-[1.6fr_1fr] gap-6 lg:h-[800px]">
             {/* 1. Large Portrait: Spans 5 columns and both rows */}
-            <div className="lg:col-span-5 lg:row-span-2 relative group overflow-hidden rounded-2xl shadow-premium h-[450px] lg:h-full cursor-pointer">
+            <motion.div
+              whileHover={{ scale: 1.02, transition: { duration: 0.5 } }}
+              className="lg:col-span-5 lg:row-span-2 relative group overflow-hidden rounded-2xl shadow-premium h-[450px] lg:h-full cursor-pointer"
+            >
               <img src="/image1.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-50" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 md:p-12 transition-all duration-500">
                 <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-4 transition-transform duration-500 group-hover:-translate-y-2 font-mono">Profile // 01</p>
@@ -339,10 +505,13 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* 2. Education Card: Spans 7 columns in the top row */}
-            <div className="lg:col-span-7 lg:row-span-1 relative group overflow-hidden rounded-2xl shadow-premium cursor-pointer h-[350px] lg:h-full">
+            <motion.div
+              whileHover={{ y: -10, transition: { duration: 0.4 } }}
+              className="lg:col-span-7 lg:row-span-1 relative group overflow-hidden rounded-2xl shadow-premium cursor-pointer h-[350px] lg:h-full"
+            >
               <img src="/images/college.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-[0.3]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 md:p-10 opacity-0 group-hover:opacity-100 transition-all duration-500">
                 <div className="flex justify-between items-start mb-4">
@@ -364,11 +533,14 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* 3. Vision Card: Spans 5 columns in the bottom row */}
-            <div className="lg:col-span-5 lg:row-span-1 relative group overflow-hidden rounded-2xl shadow-premium h-[300px] lg:h-full cursor-pointer">
-              <img src="/images/vision.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-50" />
+            <motion.div
+              whileHover={{ scale: 0.98, transition: { duration: 0.4 } }}
+              className="lg:col-span-5 lg:row-span-1 relative group overflow-hidden rounded-2xl shadow-premium h-[300px] lg:h-full cursor-pointer"
+            >
+              <img src="/images/vision.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:brightness-50" />
               <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-500"></div>
               <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-10">
                 <h3 className="text-3xl md:text-4xl text-white uppercase leading-[0.85] tracking-tighter transition-transform duration-500 group-hover:-translate-y-2">Vision & <span className="text-accent">Drive</span></h3>
@@ -378,7 +550,7 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* 4. Languages Card: Spans remaining 2 columns in the bottom row */}
             <div className="lg:col-span-2 lg:row-span-1 bg-[#111] border border-white/5 rounded-2xl p-6 md:p-8 flex flex-col justify-center text-white shadow-2xl relative overflow-hidden group cursor-pointer transition-all duration-500 hover:border-accent/30 h-[250px] lg:h-full">
@@ -425,11 +597,26 @@ export default function Home() {
           <div className="flex flex-col mb-16 md:mb-24 px-6 md:px-10">
             <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-accent mb-4">Selected Works</span>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-0">
-              <h2 className="text-4xl md:text-7xl font-bold uppercase tracking-tighter leading-[0.8]">Featured <br /> <span className="text-stroke">Projects</span></h2>
-              <button className="text-[10px] font-extrabold uppercase tracking-[0.3em] border-b border-black pb-1 hover:text-accent hover:border-accent transition-all flex items-center gap-2 group/btn max-w-max">
-                View All Work
-                <span className="transition-transform group-hover/btn:translate-x-1">→</span>
-              </button>
+              <h2 className="text-4xl md:text-7xl font-bold uppercase tracking-tighter leading-[0.8] mb-4">
+                {"Featured Projects".split("").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.03, duration: 0.6, ease: "circOut" }}
+                    className="inline-block"
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
+              </h2>
+              <Magnetic>
+                <button className="text-[10px] font-extrabold uppercase tracking-[0.3em] border-b border-black pb-1 hover:text-accent hover:border-accent transition-all flex items-center gap-2 group/btn max-w-max">
+                  View All Work
+                  <span className="transition-transform group-hover/btn:translate-x-1">→</span>
+                </button>
+              </Magnetic>
             </div>
           </div>
 
@@ -490,13 +677,25 @@ export default function Home() {
                 ]
               }
             ].map((project, i) => (
-              <div key={i} className="group flex flex-col w-[85vw] md:w-[50vw] lg:w-[35vw] shrink-0 snap-center">
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9, y: 50 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -10 }}
+                className="group flex flex-col w-[85vw] md:w-[50vw] lg:w-[35vw] shrink-0 snap-center"
+              >
                 {/* Project Image Area */}
                 <div className="w-full aspect-[16/10] overflow-hidden rounded-2xl shadow-premium relative mb-6">
-                  <img src={project.image} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-black/5 group-hover:bg-black/20 transition-colors duration-500"></div>
+                  <motion.img
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                    src={project.image}
+                    className="w-full h-full object-cover transition-grayscale grayscale group-hover:grayscale-0"
+                  />
+                  <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors duration-500"></div>
 
-                  {/* Floating Tech Badges Icon-based */}
                   <div className="absolute top-4 left-4 flex flex-wrap gap-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
                     {project.tech.map(t => (
                       <span key={t.name} className="flex items-center gap-1.5 px-2.5 py-1.5 bg-black/80 backdrop-blur-md text-[8px] font-bold text-white uppercase tracking-widest rounded-sm border border-white/10">
@@ -524,29 +723,36 @@ export default function Home() {
 
                   {/* Actions */}
                   <div className="flex items-center gap-4 mt-auto">
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/btn relative h-12 px-8 overflow-hidden rounded-full bg-black text-white flex items-center justify-center gap-3 transition-all duration-500 hover:scale-105 active:scale-95"
-                    >
-                      <div className="absolute inset-0 bg-accent translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500"></div>
-                      <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.2em]">View Project</span>
-                      <svg className="relative z-10 w-4 h-4 transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </a>
+                    <Magnetic>
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/btn relative h-12 px-8 overflow-hidden rounded-full bg-black text-white flex items-center justify-center gap-3 transition-all duration-500 hover:scale-105 active:scale-95"
+                      >
+                        <div className="absolute inset-0 bg-accent translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500"></div>
+                        <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.2em]">View Project</span>
+                        <svg className="relative z-10 w-4 h-4 transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </a>
+                    </Magnetic>
 
                     <div className="flex items-center gap-2">
                       {project.tech.map((t, idx) => (
-                        <div key={idx} className="w-8 h-8 rounded-full border border-black/5 bg-black/[0.02] flex items-center justify-center text-black/40 hover:text-accent hover:border-accent/30 transition-all duration-300" title={t.name}>
+                        <motion.div
+                          key={idx}
+                          whileHover={{ scale: 1.2, y: -5 }}
+                          className="w-8 h-8 rounded-full border border-black/5 bg-black/[0.02] flex items-center justify-center text-black/40 hover:text-accent hover:border-accent/30 transition-all duration-300"
+                          title={t.name}
+                        >
                           <span className="text-sm">{t.icon}</span>
-                        </div>
+                        </motion.div>
                       ))}
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </section>
@@ -596,14 +802,26 @@ export default function Home() {
                       { name: 'Framer', svg: <SiFramer className="w-full h-full" /> },
                       { name: 'WebGL', svg: <SiWebgl className="w-full h-full" /> }
                     ].map((tool, idx) => (
-                      <div key={idx} className="flex flex-col items-center gap-2.5 group/icon cursor-pointer" style={{ transitionDelay: `${idx * 50}ms` }}>
-                        <div title={tool.name} className="w-12 h-12 md:w-14 md:h-14 bg-[#1a1a1a] border border-white/5 rounded-full flex items-center justify-center text-white/50 group-hover/icon:bg-[#222] group-hover/icon:text-accent group-hover/icon:border-accent/30 transition-all duration-300 shadow-sm group-hover/icon:scale-110 group-hover/icon:-translate-y-1">
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1 }}
+                        className="flex flex-col items-center gap-2.5 group/icon cursor-pointer"
+                      >
+                        <motion.div
+                          whileHover={{ scale: 1.2, rotate: 10 }}
+                          whileTap={{ scale: 0.9 }}
+                          title={tool.name}
+                          className="w-12 h-12 md:w-14 md:h-14 bg-[#1a1a1a] border border-white/5 rounded-full flex items-center justify-center text-white/50 group-hover/icon:bg-[#222] group-hover/icon:text-accent group-hover/icon:border-accent/30 transition-all duration-300 shadow-sm shadow-accent/0 group-hover/icon:shadow-accent/20 group-hover/icon:-translate-y-1"
+                        >
                           <div className="w-6 h-6 md:w-7 md:h-7 flex items-center justify-center">
                             {tool.svg}
                           </div>
-                        </div>
+                        </motion.div>
                         <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white/30 group-hover/icon:text-white transition-colors duration-300">{tool.name}</span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
@@ -750,7 +968,20 @@ export default function Home() {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 md:gap-0 mb-20 md:mb-32">
               <div className="flex flex-col">
                 <span className="text-[10px] font-mono font-black uppercase tracking-[0.5em] text-accent mb-6 block">Career_Trajectory</span>
-                <h2 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.85]">Work <br /><span className="text-stroke">Experience</span></h2>
+                <h2 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.85]">
+                  {"Work Experience".split("").map((char, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0, scale: 1.2, filter: 'blur(10px)' }}
+                      whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.02, duration: 0.8, ease: "easeOut" }}
+                      className="inline-block"
+                    >
+                      {char === " " ? "\u00A0" : char}
+                    </motion.span>
+                  ))}
+                </h2>
               </div>
               <div className="flex flex-col gap-6 max-w-sm">
                 <p className="text-sm md:text-base font-medium leading-relaxed opacity-50">
@@ -787,7 +1018,14 @@ export default function Home() {
                   desc: 'Architected and delivered bespoke web solutions for international clients. Handled full project lifecycles from requirement gathering to rapid prototyping and final production deployment.'
                 }
               ].map((exp, i) => (
-                <div key={i} className="group relative border-b border-black/10 flex flex-col lg:flex-row lg:items-center py-12 md:py-16 gap-6 lg:gap-0 hover:bg-[#0a0a0a] hover:text-white transition-all duration-[600ms] ease-[cubic-bezier(0.19,1,0.22,1)] px-6 lg:px-12 -mx-6 lg:-mx-12 cursor-pointer overflow-hidden">
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15, duration: 0.8 }}
+                  className="group relative border-b border-black/10 flex flex-col lg:flex-row lg:items-center py-12 md:py-16 gap-6 lg:gap-0 hover:bg-[#0a0a0a] hover:text-white transition-all duration-[600ms] ease-[cubic-bezier(0.19,1,0.22,1)] px-6 lg:px-12 -mx-6 lg:-mx-12 cursor-pointer overflow-hidden"
+                >
 
                   {/* Interaction Accent Line */}
                   <div className="absolute left-0 top-0 bottom-0 w-0 md:w-1.5 bg-accent scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-bottom ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
@@ -820,7 +1058,7 @@ export default function Home() {
                     <span className="absolute top-1/2 left-0 w-full h-[2px] bg-accent -translate-y-1/2"></span>
                     <span className="absolute top-0 left-1/2 w-[2px] h-full bg-accent -translate-x-1/2"></span>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -845,7 +1083,20 @@ export default function Home() {
               {/* Column 1: The Narrative & Status */}
               <div className="lg:col-span-5 space-y-16">
                 <div>
-                  <h2 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.8] mb-8">Initiate <br /><span className="text-stroke">Brief</span></h2>
+                  <h2 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.8] mb-8">
+                    {"Initiate Brief".split("").map((char, i) => (
+                      <motion.span
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.04, duration: 0.6 }}
+                        className="inline-block"
+                      >
+                        {char === " " ? "\u00A0" : char}
+                      </motion.span>
+                    ))}
+                  </h2>
                   <p className="text-sm md:text-base font-medium leading-relaxed opacity-50 max-w-sm">
                     Currently accepting high-stakes engineering projects and strategic infrastructure partnerships.
                   </p>
@@ -898,27 +1149,27 @@ export default function Home() {
                     <form onSubmit={onSubmit} className="space-y-8">
                       <div className="space-y-4">
                         <div className="relative group">
-                          <input 
-                            type="email" 
+                          <input
+                            type="email"
                             name="email"
                             required
-                            placeholder="ID // EMAIL" 
-                            className="w-full bg-transparent border-b-2 border-black/5 focus:border-accent py-4 outline-none text-xs font-black uppercase tracking-widest transition-all placeholder:opacity-20" 
+                            placeholder="ID // EMAIL"
+                            className="w-full bg-transparent border-b-2 border-black/5 focus:border-accent py-4 outline-none text-xs font-black uppercase tracking-widest transition-all placeholder:opacity-20"
                           />
                           <div className="absolute top-0 right-0 text-[7px] font-mono opacity-0 group-focus-within:opacity-30 uppercase tracking-widest">Required</div>
                         </div>
                         <div className="relative group">
-                          <textarea 
+                          <textarea
                             name="message"
                             required
-                            rows="3" 
-                            placeholder="BRIEF..." 
-                            className="w-full bg-transparent border-b-2 border-black/5 focus:border-accent py-4 outline-none text-xs font-black uppercase tracking-widest transition-all placeholder:opacity-20 resize-none" 
+                            rows="3"
+                            placeholder="BRIEF..."
+                            className="w-full bg-transparent border-b-2 border-black/5 focus:border-accent py-4 outline-none text-xs font-black uppercase tracking-widest transition-all placeholder:opacity-20 resize-none"
                           />
                           <div className="absolute top-0 right-0 text-[7px] font-mono opacity-0 group-focus-within:opacity-30 uppercase tracking-widest">Message_Body</div>
                         </div>
                       </div>
-                      
+
                       {result && (
                         <div className={`text-[10px] font-mono font-bold uppercase tracking-widest ${result.includes('Successfully') ? 'text-green-500' : 'text-accent'}`}>
                           {result}
@@ -952,9 +1203,15 @@ export default function Home() {
         <footer className="px-6 md:px-10 py-16 md:py-24 bg-[#0a0a0a] text-white relative overflow-hidden">
           {/* Subtle Background Mark */}
           <div className="absolute inset-x-0 -bottom-4 md:-bottom-8 flex justify-center items-end pointer-events-none select-none overflow-hidden pb-4">
-            <span className="text-[25vw] md:text-[21vw] font-black uppercase tracking-tighter leading-[0.75] opacity-[0.04] text-white whitespace-nowrap">
+            <motion.span
+              initial={{ y: 200, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 0.04 }}
+              viewport={{ once: false }}
+              transition={{ duration: 1.5, ease: "circOut" }}
+              className="text-[25vw] md:text-[21vw] font-black uppercase tracking-tighter leading-[0.75] text-white whitespace-nowrap"
+            >
               CHARAN
-            </span>
+            </motion.span>
           </div>
 
           <div className="flex flex-col gap-20 relative z-10">
@@ -1004,9 +1261,9 @@ export default function Home() {
                     { id: 'LI', url: 'https://www.linkedin.com/in/charan-raj-a315ab251/', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.154z" /></svg> },
                     { id: 'X', url: 'https://x.com/charanraj282004', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg> }
                   ].map(social => (
-                    <motion.a 
-                      key={social.id} 
-                      href={social.url} 
+                    <motion.a
+                      key={social.id}
+                      href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ y: -5, scale: 1.1, backgroundColor: 'var(--accent)', color: 'white' }}
