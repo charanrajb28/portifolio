@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer, SiWebgl, SiNodedotjs, SiSocketdotio, SiGraphql, SiExpress, SiRedis, SiDocker, SiVercel, SiGithubactions, SiPostgresql, SiMongodb, SiPrisma } from 'react-icons/si'
+import { FaAws } from 'react-icons/fa'
 
 export default function Home() {
   const container = {
@@ -445,9 +447,23 @@ export default function Home() {
                   <p className="text-sm md:text-base font-medium text-white/50 leading-relaxed max-w-lg mb-8 group-hover:text-white/80 transition-colors duration-500">Architecting dynamic, highly-interactive client-side applications with an obsessive focus on rendering performance and smooth micro-animations.</p>
 
                   {/* Tool tags */}
-                  <div className="flex flex-wrap gap-2 md:gap-3">
-                    {['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'WebGL'].map((tool, idx) => (
-                      <span key={idx} className="px-4 py-2 bg-[#1a1a1a] border border-white/5 rounded-full text-xs font-semibold text-white/60 group-hover:text-white group-hover:border-white/20 group-hover:bg-white/10 transition-all duration-500 shadow-sm" style={{ transitionDelay: `${idx * 50}ms` }}>{tool}</span>
+                  <div className="flex flex-wrap gap-4 md:gap-5 mt-6">
+                    {[
+                      { name: 'React', svg: <SiReact className="w-full h-full" /> },
+                      { name: 'Next.js', svg: <SiNextdotjs className="w-full h-full" /> },
+                      { name: 'TypeScript', svg: <SiTypescript className="w-full h-full" /> },
+                      { name: 'Tailwind CSS', svg: <SiTailwindcss className="w-full h-full" /> },
+                      { name: 'Framer', svg: <SiFramer className="w-full h-full" /> },
+                      { name: 'WebGL', svg: <SiWebgl className="w-full h-full" /> }
+                    ].map((tool, idx) => (
+                      <div key={idx} className="flex flex-col items-center gap-2.5 group/icon cursor-pointer" style={{ transitionDelay: `${idx * 50}ms` }}>
+                        <div title={tool.name} className="w-12 h-12 md:w-14 md:h-14 bg-[#1a1a1a] border border-white/5 rounded-full flex items-center justify-center text-white/50 group-hover/icon:bg-[#222] group-hover/icon:text-accent group-hover/icon:border-accent/30 transition-all duration-300 shadow-sm group-hover/icon:scale-110 group-hover/icon:-translate-y-1">
+                          <div className="w-6 h-6 md:w-7 md:h-7 flex items-center justify-center">
+                             {tool.svg}
+                          </div>
+                        </div>
+                        <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white/30 group-hover/icon:text-white transition-colors duration-300">{tool.name}</span>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -471,9 +487,22 @@ export default function Home() {
                   <h4 className="text-3xl font-bold tracking-tight text-white mb-4">Scalable <br /> API logic.</h4>
                   <p className="text-sm font-medium text-white/50 leading-relaxed max-w-xs mb-8 group-hover:text-white/80 transition-colors duration-500">Building secure, RESTful microservices and real-time data pipelines.</p>
 
-                  <div className="flex flex-wrap gap-2">
-                    {['Node.js', 'NestJS', 'GraphQL', 'Express', 'Redis'].map((tool, idx) => (
-                      <span key={idx} className="px-3.5 py-1.5 bg-[#1a1a1a] border border-white/5 rounded-md text-xs font-semibold text-white/60 group-hover:border-accent/30 group-hover:text-accent transition-all duration-500">{tool}</span>
+                  <div className="flex flex-wrap gap-4 md:gap-5 mt-6">
+                    {[
+                      { name: 'Node.js', svg: <SiNodedotjs className="w-full h-full" /> },
+                      { name: 'WebSockets', svg: <SiSocketdotio className="w-full h-full" /> },
+                      { name: 'GraphQL', svg: <SiGraphql className="w-full h-full" /> },
+                      { name: 'Express', svg: <SiExpress className="w-full h-full" /> },
+                      { name: 'Redis', svg: <SiRedis className="w-full h-full" /> }
+                    ].map((tool, idx) => (
+                      <div key={idx} className="flex flex-col items-center gap-2.5 group/icon cursor-pointer" style={{ transitionDelay: `${idx * 50}ms` }}>
+                        <div title={tool.name} className="w-12 h-12 md:w-14 md:h-14 bg-[#1a1a1a] border border-white/5 rounded-full flex items-center justify-center text-white/50 group-hover/icon:bg-[#222] group-hover/icon:text-accent group-hover/icon:border-accent/30 transition-all duration-300 shadow-sm group-hover/icon:scale-110 group-hover/icon:-translate-y-1">
+                          <div className="w-6 h-6 flex items-center justify-center">
+                             {tool.svg}
+                          </div>
+                        </div>
+                        <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white/30 group-hover/icon:text-white transition-colors duration-300">{tool.name}</span>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -501,9 +530,21 @@ export default function Home() {
 
                 <div className="mt-auto relative z-20">
                   <h4 className="text-3xl font-bold tracking-tight text-white mb-4">Immutable <br /> infra.</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {['AWS', 'Docker', 'Vercel', 'CI/CD'].map((tool, idx) => (
-                      <span key={idx} className="px-4 py-2 bg-[#1a1a1a] border border-white/5 rounded-full text-[10px] font-bold uppercase tracking-widest text-white/50 group-hover:bg-white group-hover:text-black transition-all duration-500">{tool}</span>
+                  <div className="flex flex-wrap gap-4 md:gap-5 mt-6">
+                    {[
+                      { name: 'AWS', svg: <FaAws className="w-full h-full" /> },
+                      { name: 'Docker', svg: <SiDocker className="w-full h-full" /> },
+                      { name: 'Vercel', svg: <SiVercel className="w-full h-full" /> },
+                      { name: 'CI/CD', svg: <SiGithubactions className="w-full h-full" /> }
+                    ].map((tool, idx) => (
+                      <div key={idx} className="flex flex-col items-center gap-2.5 group/icon cursor-pointer" style={{ transitionDelay: `${idx * 50}ms` }}>
+                        <div title={tool.name} className="w-12 h-12 md:w-14 md:h-14 bg-[#1a1a1a] border border-white/5 rounded-full flex items-center justify-center text-white/50 group-hover/icon:bg-[#222] group-hover/icon:text-accent group-hover/icon:border-accent/30 transition-all duration-300 shadow-sm group-hover/icon:scale-110 group-hover/icon:-translate-y-1">
+                          <div className="w-6 h-6 flex items-center justify-center">
+                             {tool.svg}
+                          </div>
+                        </div>
+                        <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white/30 group-hover/icon:text-white transition-colors duration-300">{tool.name}</span>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -532,9 +573,21 @@ export default function Home() {
                     <p className="text-sm md:text-base font-medium text-white/50 leading-relaxed group-hover:text-white/80 transition-colors duration-500">Complex normalized relational schemas combined with blistering fast caching layers for instantaneous query execution.</p>
                   </div>
 
-                  <div className="flex flex-wrap md:justify-end gap-3 shrink-0 max-w-[280px]">
-                    {['PostgreSQL', 'MongoDB', 'Redis', 'Prisma ORM'].map((tool, idx) => (
-                      <span key={idx} className="px-6 py-3 bg-[#1a1a1a] border border-white/5 rounded-2xl text-xs md:text-sm font-semibold text-white/60 group-hover:border-white/30 group-hover:bg-white/10 group-hover:text-white group-hover:-translate-y-1 transition-all duration-500 shadow-xl" style={{ transitionDelay: `${idx * 100}ms` }}>{tool}</span>
+                  <div className="flex flex-wrap md:justify-end gap-4 md:gap-6 shrink-0 max-w-[360px] mt-6">
+                    {[
+                      { name: 'PostgreSQL', svg: <SiPostgresql className="w-full h-full" /> },
+                      { name: 'MongoDB', svg: <SiMongodb className="w-full h-full" /> },
+                      { name: 'Redis', svg: <SiRedis className="w-full h-full" /> },
+                      { name: 'Prisma ORM', svg: <SiPrisma className="w-full h-full" /> }
+                    ].map((tool, idx) => (
+                      <div key={idx} className="flex flex-col items-center gap-2.5 group/icon cursor-pointer" style={{ transitionDelay: `${idx * 100}ms` }}>
+                        <div title={tool.name} className="w-14 h-14 md:w-16 md:h-16 bg-[#1a1a1a] border border-white/5 rounded-full flex items-center justify-center text-white/50 group-hover/icon:bg-[#222] group-hover/icon:text-accent group-hover/icon:border-accent/30 transition-all duration-300 shadow-xl group-hover/icon:scale-110 group-hover/icon:-translate-y-1">
+                          <div className="w-7 h-7 flex items-center justify-center">
+                             {tool.svg}
+                          </div>
+                        </div>
+                        <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white/30 group-hover/icon:text-white transition-colors duration-300">{tool.name}</span>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -739,8 +792,10 @@ export default function Home() {
         {/* Premium Command Footer - Dark Edition */}
         <footer className="px-6 md:px-10 py-16 md:py-24 bg-[#0a0a0a] text-white relative overflow-hidden">
           {/* Subtle Background Mark */}
-          <div className="absolute -bottom-32 md:-bottom-48 -left-10 text-[30vw] font-black uppercase tracking-tighter opacity-[0.03] pointer-events-none select-none text-white overflow-hidden">
-            CHARAN
+          <div className="absolute inset-x-0 -bottom-4 md:-bottom-8 flex justify-center items-end pointer-events-none select-none overflow-hidden pb-4">
+            <span className="text-[25vw] md:text-[21vw] font-black uppercase tracking-tighter leading-[0.75] opacity-[0.04] text-white whitespace-nowrap">
+              CHARAN
+            </span>
           </div>
 
           <div className="flex flex-col gap-20 relative z-10">
