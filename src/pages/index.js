@@ -297,61 +297,97 @@ export default function Home() {
 
         {/* About Me Section */}
         <section id="about" className="px-6 md:px-10 py-24 md:py-32">
-          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:h-auto">
-            {/* Column 1: Large Portrait */}
-            <div className="lg:col-span-5 relative group overflow-hidden rounded-2xl shadow-premium h-[450px] lg:h-[700px] cursor-pointer">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 lg:grid-rows-[1.6fr_1fr] gap-6 lg:h-[800px]">
+            {/* 1. Large Portrait: Spans 5 columns and both rows */}
+            <div className="lg:col-span-5 lg:row-span-2 relative group overflow-hidden rounded-2xl shadow-premium h-[450px] lg:h-full cursor-pointer">
               <img src="/images/hero-model.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-50" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 md:p-12 transition-all duration-500">
-                <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-4 transition-transform duration-500 group-hover:-translate-y-2">Background — 01</p>
+                <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-4 transition-transform duration-500 group-hover:-translate-y-2 font-mono">Profile // 01</p>
                 <h3 className="text-4xl md:text-6xl text-white uppercase leading-[0.85] tracking-tighter transition-transform duration-500 group-hover:-translate-y-2">About <br /> <span className="font-serif-italic text-accent normal-case italic">Me</span></h3>
 
                 <div className="overflow-hidden mt-4">
-                  <p className="text-white/80 text-sm font-medium leading-relaxed opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                    I am a multi-disciplinary Full Stack Developer obsessed with crafting performant, pixel-perfect user experiences. Blending deep technical expertise with a keen eye for design, I bridge the gap between engineering and aesthetics to build digital products that leave a lasting impact.
+                  <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                    Currently in my 4th year of CS Engineering at Sir MVIT, Bangalore. I am a Full-Stack Developer driven by complex problem-solving. With deep expertise in Java, React, and MongoDB, I build systems that matter—from decentralized document-sharing and real-time communication platforms to routing engines and disaster detection solutions.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Column 2 & 3 */}
-            <div className="lg:col-span-7 grid grid-rows-1 lg:grid-rows-[1.5fr_1fr] gap-6 lg:h-[700px]">
-              <div className="relative group overflow-hidden rounded-2xl shadow-premium h-[350px] lg:h-full cursor-pointer">
-                <img src="/images/mosaic-1.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-50" />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-500"></div>
-                <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-10">
-                  <h3 className="text-3xl md:text-4xl text-white uppercase leading-[0.85] tracking-tighter transition-transform duration-500 group-hover:-translate-y-2">My <span className="text-accent">Vision</span></h3>
-                  <div className="overflow-hidden mt-2">
-                    <p className="text-white/90 text-sm font-medium opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                      To engineer robust, scalable architectures that empower visionary brands to deliver seamless digital experiences globally.
-                    </p>
+            {/* 2. Education Card: Spans 7 columns in the top row */}
+            <div className="lg:col-span-7 lg:row-span-1 relative group overflow-hidden rounded-2xl shadow-premium cursor-pointer h-[350px] lg:h-full">
+              <img src="/images/mosaic-2.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-[0.3]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 md:p-10 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="flex justify-between items-start mb-4">
+                  <div className="space-y-1">
+                    <p className="text-accent text-xs font-bold uppercase tracking-widest font-mono">Education</p>
+                    <h5 className="text-3xl md:text-4xl font-bold uppercase tracking-tighter text-white">Sir M. Visvesvaraya Institute of Technology</h5>
                   </div>
+                  <div className="px-4 py-2 border border-accent/30 rounded-full text-accent font-mono text-sm font-bold">GPA: 8.5</div>
+                </div>
+                
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-4 border-t border-white/10">
+                  <p className="text-white/80 text-sm font-medium leading-relaxed max-w-md">
+                    B.E. in Computer Science and Engineering. Specialized in architecting robust digital systems and high-performance algorithms.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['DSA', 'Backend', 'Frontend'].map(tag => (
+                      <span key={tag} className="px-2 py-1 bg-white/5 border border-white/10 rounded-sm text-[9px] font-mono text-white/40 uppercase tracking-widest">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 3. Vision Card: Spans 5 columns in the bottom row */}
+            <div className="lg:col-span-5 lg:row-span-1 relative group overflow-hidden rounded-2xl shadow-premium h-[300px] lg:h-full cursor-pointer">
+              <img src="/images/mosaic-1.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-50" />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-500"></div>
+              <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-10">
+                <h3 className="text-3xl md:text-4xl text-white uppercase leading-[0.85] tracking-tighter transition-transform duration-500 group-hover:-translate-y-2">Vision & <span className="text-accent">Drive</span></h3>
+                <div className="overflow-hidden mt-2">
+                  <p className="text-white/90 text-sm font-medium opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                    To constantly push the limits of modern software engineering. Whether I'm competing in high-stakes hackathons, contributing to open-source, or conducting applied research, my goal is to evolve rapidly and build impactful technology.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 4. Languages Card: Spans remaining 2 columns in the bottom row */}
+            <div className="lg:col-span-2 lg:row-span-1 bg-[#111] border border-white/5 rounded-2xl p-6 md:p-8 flex flex-col justify-center text-white shadow-2xl relative overflow-hidden group cursor-pointer transition-all duration-500 hover:border-accent/30 h-[250px] lg:h-full">
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10 w-9 h-9 border border-white/10 rounded-full flex items-center justify-center text-[9px] font-mono font-bold text-accent transition-all duration-500 group-hover:border-accent group-hover:rotate-[360deg]">LANG</div>
+              
+              <div className="relative z-10 mt-6 space-y-4">
+                <div className="space-y-1">
+                  <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white/40 group-hover:text-accent transition-colors duration-500">Stack</p>
+                  <h4 className="text-lg font-bold tracking-tighter font-mono">Linguistic</h4>
+                </div>
+
+                <div className="space-y-3">
+                  {[
+                    { name: 'English', level: '90%', label: 'Prof' },
+                    { name: 'Kannada', level: '100%', label: 'Native' },
+                    { name: 'Hindi', level: '75%', label: 'Conv' }
+                  ].map((lang, idx) => (
+                    <div key={idx} className="space-y-1 group/lang">
+                      <div className="flex justify-between items-end">
+                        <span className="text-[9px] font-bold uppercase tracking-widest text-white group-hover/lang:text-accent transition-colors">{lang.name}</span>
+                        <span className="text-[7px] font-mono text-white/40">{lang.label}</span>
+                      </div>
+                      <div className="h-[2px] w-full bg-white/5 rounded-full overflow-hidden">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: lang.level }}
+                          transition={{ duration: 1.5, delay: 0.5 + (idx * 0.1) }}
+                          className="h-full bg-accent group-hover/lang:bg-white transition-colors"
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 auto-rows-[200px] lg:auto-rows-auto lg:h-full">
-                <div className="relative group overflow-hidden rounded-2xl shadow-premium cursor-pointer">
-                  <img src="/images/mosaic-2.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-50" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                    <h5 className="text-xl text-white font-bold uppercase tracking-tighter">Frontend</h5>
-                    <p className="text-accent text-[10px] font-bold uppercase tracking-widest mt-1">React / Next.js</p>
-                  </div>
-                </div>
-                <div className="bg-accent rounded-2xl p-6 md:p-8 flex flex-col justify-between text-white shadow-premium relative overflow-hidden group cursor-pointer">
-                  <div className="relative z-10 w-10 h-10 border border-white/30 rounded-full flex items-center justify-center text-xs font-bold transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">03</div>
-                  <div className="relative z-10">
-                    <p className="text-xs font-bold uppercase leading-relaxed tracking-widest opacity-90 transition-transform duration-500 group-hover:-translate-y-2">Continuous <br /> Expansion</p>
-                    <p className="text-[10px] text-white/70 font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 mt-2">Always learning and adapting to the cutting edge.</p>
-                  </div>
-                  <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-all duration-1000"></div>
-                </div>
-                <div className="relative group overflow-hidden rounded-2xl shadow-premium cursor-pointer">
-                  <img src="/images/cups.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-50" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                    <h5 className="text-xl text-white font-bold uppercase tracking-tighter">Backend</h5>
-                    <p className="text-accent text-[10px] font-bold uppercase tracking-widest mt-1">AWS / Node</p>
-                  </div>
-                </div>
-              </div>
+              <div className="absolute -right-12 -bottom-12 w-32 h-32 bg-accent/10 rounded-full blur-[60px] group-hover:bg-accent/20 transition-all duration-700"></div>
             </div>
           </div>
         </section>
