@@ -154,19 +154,92 @@ export default function Home() {
                   transition={{ delay: 0.6, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                   className="relative max-w-[400px] lg:max-w-none mx-auto"
                 >
-                  <div className="w-full aspect-[3/2] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl bg-white/40 p-2 md:p-3 backdrop-blur-xl border border-white/30 relative z-10 group">
-                    <img src="/images/photographer.png" className="w-full h-full object-cover rounded-xl md:rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-1000" />
-                    <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-all pointer-events-none"></div>
+                  <div className="relative group perspective-1000">
+                    {/* Rotating Peripheral Glass Ring */}
+                    <div className="absolute -inset-10 border border-black/[0.05] rounded-full group-hover:rotate-180 transition-transform duration-[3000ms] ease-in-out pointer-events-none">
+                       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent shadow-[0_0_15px_rgba(var(--accent-rgb),0.5)]"></div>
+                    </div>
+                    
+                    {/* The Multi-Layer Kinetic Stack */}
+                    <div className="relative w-full aspect-[3/2] z-10">
+                      {/* Depth Layer 1: Blurred Ghost */}
+                      <div className="absolute inset-4 bg-accent/5 rounded-[40px] blur-2xl scale-95 group-hover:scale-105 group-hover:bg-accent/10 transition-all duration-1000"></div>
+                      
+                      {/* Depth Layer 2: Main Image Frame */}
+                      <div className="relative w-full h-full overflow-hidden rounded-[40px] shadow-2xl transition-transform duration-700 ease-out group-hover:-translate-y-2 group-hover:rotate-1">
+                        <img 
+                          src="/images/photographer.png" 
+                          className="w-full h-full object-cover grayscale brightness-110 contrast-[1.15] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[2000ms] cubic-bezier(0.2, 1, 0.2, 1)" 
+                        />
+                        
+                        {/* Interactive UI Overlays */}
+                        <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(0,0,0,0.1)_25%,transparent_25%,transparent_50%,rgba(0,0,0,0.1)_50%,rgba(0,0,0,0.1)_75%,transparent_75%,transparent)] bg-[length:4px_4px] opacity-0 group-hover:opacity-20 transition-opacity duration-700"></div>
+                        
+                        {/* Liquid Light Scanner */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-accent/30 to-transparent h-1/2 -top-full group-hover:top-full transition-all duration-[2000ms] ease-linear pointer-events-none opacity-0 group-hover:opacity-100"></div>
+
+                        {/* Structural Indices */}
+                        <div className="absolute top-10 right-10 flex flex-col items-end gap-1 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200">
+                           <span className="text-[7px] font-black uppercase tracking-[0.5em] text-white/40">Sector_04</span>
+                           <div className="w-8 h-[1px] bg-white/20"></div>
+                        </div>
+
+                        {/* Status Marker */}
+                        <div className="absolute bottom-10 left-10 flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                           <div className="flex gap-1">
+                              {[1,2,3].map(i => <div key={i} className="w-1 h-1 rounded-full bg-accent animate-pulse" style={{ animationDelay: `${i*200}ms` }}></div>)}
+                           </div>
+                           <span className="text-[9px] font-bold text-white uppercase tracking-[0.2em]">System_Live</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Outer Designator */}
+                    <div className="absolute -left-12 top-1/2 -translate-y-1/2 h-40 w-[1px] bg-gradient-to-b from-transparent via-black/10 to-transparent hidden lg:block">
+                       <span className="absolute top-0 -left-2 text-[6px] font-bold uppercase tracking-widest vertical-text opacity-30">P.77 V.04</span>
+                    </div>
+
+                    {/* Floating Decorative Orb */}
+                    <div className="absolute -top-6 -right-6 w-20 h-20 border border-black/5 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-125 group-hover:rotate-90 pointer-events-none">
+                       <div className="w-px h-full bg-black/10 rotate-45"></div>
+                       <div className="w-px h-full bg-black/10 -rotate-45"></div>
+                    </div>
                   </div>
 
-                  {/* Floating badge */}
+                  {/* Ultra-Minimalist Kinetic Resume Hub */}
                   <motion.div
-                    animate={{ y: [0, -15, 0] }}
+                    animate={{ y: [0, -10, 0] }}
                     transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-                    className="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 bg-black text-white px-6 md:px-10 py-4 md:py-6 rounded-xl md:rounded-2xl shadow-premium z-20 border border-white/10"
+                    className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 z-40 group/resume-hub"
                   >
-                    <div className="text-[8px] md:text-[10px] font-extrabold uppercase tracking-[0.4em] text-accent mb-1">Latest Project</div>
-                    <div className="text-xs md:text-sm font-bold uppercase tracking-tighter">Charan Raj B / 2024</div>
+                    <a 
+                      href="/resume.txt" 
+                      download 
+                      className="relative block bg-[#0a0a0a] text-white px-4 md:px-5 py-3 md:py-4 rounded-xl md:rounded-2xl shadow-[0_15px_30px_rgba(0,0,0,0.4)] border border-white/5 overflow-hidden group/resume-btn transition-all duration-500 hover:scale-105 active:scale-95"
+                    >
+                      {/* Interaction: Liquid Accent Fill */}
+                      <div className="absolute inset-0 bg-accent translate-y-full group-hover/resume-btn:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
+                      
+                      <div className="relative z-10 flex flex-col">
+                        <div className="flex items-center gap-1.5 mb-2">
+                           <div className="w-1 h-1 rounded-full bg-accent group-hover/resume-btn:bg-white transition-colors"></div>
+                           <span className="text-[6px] md:text-[7px] font-black uppercase tracking-[0.4em] text-accent group-hover/resume-btn:text-white transition-colors">RESUME.V4</span>
+                        </div>
+                        
+                        <div className="flex items-center gap-4">
+                           <div className="flex flex-col">
+                              <h4 className="text-[10px] md:text-xs font-black uppercase leading-none tracking-widest mb-0.5">Download</h4>
+                              <p className="text-[6px] md:text-[7px] font-bold uppercase tracking-wider text-white/30 group-hover/resume-btn:text-white/60 transition-colors">PDF // 1.2MB</p>
+                           </div>
+                           
+                           <div className="flex flex-col items-center group-hover/resume-btn:translate-y-0.5 transition-transform duration-300">
+                              <svg className="w-3 h-3 md:w-3.5 md:h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                              </svg>
+                           </div>
+                        </div>
+                      </div>
+                    </a>
                   </motion.div>
 
                   {/* Decorative blobs */}
