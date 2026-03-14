@@ -111,12 +111,21 @@ export default function Home() {
 
   const [time, setTime] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    // Premium Preloader Duration
-    const loadingTimer = setTimeout(() => {
-      setIsLoading(false)
-    }, 2200)
+    // Progress counter simulation
+    const interval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(interval)
+          // Trigger exit only after reaching 100
+          setTimeout(() => setIsLoading(false), 800)
+          return 100
+        }
+        return prev + 1
+      })
+    }, 25) // Smooth 2.5s climb to 100%
 
     // Hard reset scroll to top on reload for animation consistency
     if (typeof window !== 'undefined') {
@@ -138,8 +147,8 @@ export default function Home() {
     }, 1000)
 
     return () => {
-      clearTimeout(loadingTimer)
       clearInterval(clockTimer)
+      clearInterval(interval)
     }
   }, [])
 
@@ -176,34 +185,98 @@ export default function Home() {
         <meta name="description" content="High-performance full-stack engineer and digital architect." />
       </Head>
 
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isLoading && (
           <motion.div
-            initial={{ opacity: 1 }}
-            exit={{
-              y: '-100%',
-              transition: { duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: 0.5 }
-            }}
-            className="fixed inset-0 z-[999] bg-[#0a0a0a] flex items-center justify-center overflow-hidden"
+            key="loader"
+            className="fixed inset-0 z-[999] pointer-events-auto overflow-hidden bg-transparent"
           >
-            <div className="relative overflow-hidden p-10">
+            {/* Shutter Panels */}
+            {[...Array(5)].map((_, i) => (
               <motion.div
-                initial={{ y: 100 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
-                className="text-white text-3xl md:text-5xl font-black uppercase tracking-tighter"
-              >
-                Charan Raj <span className="text-accent">B</span>
-              </motion.div>
-              <div className="mt-4 h-[1px] w-full bg-white/10 relative">
-                <motion.div
-                  initial={{ x: '-100%' }}
-                  animate={{ x: '100%' }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 bg-accent"
-                />
+                key={i}
+                initial={{ y: 0 }}
+                exit={{ 
+                  y: '-100%',
+                  transition: { 
+                    duration: 1.2, 
+                    ease: [0.19, 1, 0.22, 1], 
+                    delay: 0.1 * i + 0.5 
+                  }
+                }}
+                className="absolute top-0 h-full bg-[#0a0a0a]"
+                style={{ 
+                  left: `${i * 20}%`, 
+                  width: '20.1%', 
+                  zIndex: -1
+                }}
+              />
+            ))}
+
+            <motion.div 
+              exit={{ opacity: 0, y: -20, transition: { duration: 0.5 } }}
+              className="relative w-full h-full flex flex-col justify-between p-8 md:p-12 text-white"
+            >
+              {/* Header Info */}
+              <div className="flex justify-between items-start">
+                <div className="flex flex-col gap-1">
+                  <span className="text-accent text-[8px] md:text-[10px] font-black uppercase tracking-[0.5em]">System_Boot</span>
+                  <span className="text-white/20 text-[8px] font-mono uppercase tracking-widest">Build_V4.0.2_Kinetic</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-white/20 text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] font-mono hidden sm:block">Initializing_Data_Stream</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-[0_0_10px_rgba(var(--accent-rgb),0.5)]"></div>
+                </div>
               </div>
-            </div>
+
+              {/* Central Identity */}
+              <div className="flex flex-col items-center text-center">
+                <div className="overflow-hidden mb-4">
+                  <motion.h2 
+                    initial={{ y: 150 }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 1.5, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
+                    className="text-[12vw] md:text-[7vw] font-black uppercase tracking-tighter leading-none"
+                  >
+                    Charan Raj <span className="text-accent">B</span>
+                  </motion.h2>
+                </div>
+                <div className="flex flex-col items-center gap-4">
+                  <div className="h-[2px] w-32 md:w-48 bg-white/10 relative overflow-hidden rounded-full">
+                    <motion.div 
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: progress / 100 }}
+                      transition={{ ease: "linear" }}
+                      className="absolute inset-0 bg-accent origin-left"
+                    />
+                  </div>
+                  <span className="text-white/20 text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] font-mono max-w-xs leading-relaxed">
+                    Preparing_The_Digital_Frontier
+                  </span>
+                </div>
+              </div>
+
+              {/* Counter & Footer */}
+              <div className="flex justify-between items-end">
+                <div className="flex items-baseline gap-4">
+                  <motion.span 
+                    className="text-[15vw] md:text-[10vw] font-black leading-none tracking-tighter"
+                  >
+                    {progress.toString().padStart(2, '0')}
+                  </motion.span>
+                  <span className="text-accent text-3xl md:text-5xl font-black">%</span>
+                </div>
+                
+                <div className="flex flex-col items-end gap-2 text-right">
+                  <div className="flex flex-col">
+                    <span className="text-white/20 text-[8px] font-mono">LAT: 12.9716° N</span>
+                    <span className="text-white/20 text-[8px] font-mono">LON: 77.5946° E</span>
+                  </div>
+                  <div className="h-px w-12 bg-white/20"></div>
+                  <span className="text-white/40 text-[8px] font-mono uppercase tracking-widest">Status: Ready</span>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
