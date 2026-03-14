@@ -468,6 +468,7 @@ export default function Home() {
                       <div className="relative w-full h-full overflow-hidden rounded-[40px] shadow-2xl transition-transform duration-700 ease-out group-hover:-translate-y-2 group-hover:rotate-1">
                         <img
                           src="/image.png"
+                          alt="Charan Raj B Portfolio Portrait"
                           className="w-full h-full object-cover grayscale brightness-110 contrast-[1.15] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[2000ms] cubic-bezier(0.2, 1, 0.2, 1)"
                         />
 
@@ -568,7 +569,7 @@ export default function Home() {
               whileHover={{ scale: 1.02, transition: { duration: 0.5 } }}
               className="lg:col-span-5 lg:row-span-2 relative group overflow-hidden rounded-2xl shadow-premium h-[450px] lg:h-full cursor-pointer"
             >
-              <img src="/image1.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-50" />
+              <img src="/image1.png" alt="About Charan Raj B" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-50" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 md:p-12 transition-all duration-500">
                 <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-4 transition-transform duration-500 group-hover:-translate-y-2 font-mono">Profile // 01</p>
                 <h3 className="text-4xl md:text-6xl text-white uppercase leading-[0.85] tracking-tighter transition-transform duration-500 group-hover:-translate-y-2">About <br /> <span className="font-serif-italic text-accent normal-case italic">Me</span></h3>
@@ -586,7 +587,7 @@ export default function Home() {
               whileHover={{ y: -10, transition: { duration: 0.4 } }}
               className="lg:col-span-7 lg:row-span-1 relative group overflow-hidden rounded-2xl shadow-premium cursor-pointer h-[350px] lg:h-full"
             >
-              <img src="/images/college.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-[0.3]" />
+              <img src="/images/college.png" alt="Sir M. Visvesvaraya Institute of Technology" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-[0.3]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 md:p-10 opacity-0 group-hover:opacity-100 transition-all duration-500">
                 <div className="flex justify-between items-start mb-4">
                   <div className="space-y-1">
@@ -614,13 +615,13 @@ export default function Home() {
               whileHover={{ scale: 0.98, transition: { duration: 0.4 } }}
               className="lg:col-span-5 lg:row-span-1 relative group overflow-hidden rounded-2xl shadow-premium h-[300px] lg:h-full cursor-pointer"
             >
-              <img src="/images/vision.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:brightness-50" />
+              <img src="/images/vision.png" alt="Strategic Vision" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:brightness-50" />
               <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-500"></div>
               <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-10">
                 <h3 className="text-3xl md:text-4xl text-white uppercase leading-[0.85] tracking-tighter transition-transform duration-500 group-hover:-translate-y-2">Vision & <span className="text-accent">Drive</span></h3>
                 <div className="overflow-hidden mt-2">
                   <p className="text-white/90 text-sm font-medium opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                    To constantly push the limits of modern software engineering. Whether I'm competing in high-stakes hackathons, contributing to open-source, or conducting applied research, my goal is to evolve rapidly and build impactful technology.
+                    To constantly push the limits of modern software engineering. Whether I&apos;m competing in high-stakes hackathons, contributing to open-source, or conducting applied research, my goal is to evolve rapidly and build impactful technology.
                   </p>
                 </div>
               </div>
@@ -765,6 +766,7 @@ export default function Home() {
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     src={project.image}
+                    alt={project.brand}
                     className="w-full h-full object-cover transition-grayscale grayscale group-hover:grayscale-0"
                   />
                   <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors duration-500"></div>
