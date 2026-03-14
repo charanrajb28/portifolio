@@ -66,6 +66,7 @@ export default function Home() {
                   { name: 'About', id: 'about' },
                   { name: 'Projects', id: 'projects' },
                   { name: 'Expertise', id: 'expertise' },
+                  { name: 'Experience', id: 'experience' },
                   { name: 'Connect', id: 'connect' }
                 ].map((link, i) => (
                   <a
@@ -550,75 +551,276 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="px-6 md:px-10 py-24 md:py-32 bg-[#eeeee4]">
-          <div className="flex flex-col items-center text-center mb-16 md:mb-24 px-4">
-            <span className="text-[10px] font-extrabold uppercase tracking-[0.4em] text-accent mb-4 md:mb-6">Proven Track Record</span>
-            <h2 className="text-4xl md:text-7xl font-bold uppercase tracking-tighter leading-[0.8] mb-6 md:mb-8">Performance <br /> <span className="text-stroke">Metrics</span></h2>
-            <p className="text-sm text-text-muted max-w-lg font-medium leading-relaxed">Delivering scalable software solutions that consistently outperform market expectations.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { val: '50+', label: 'Projects Shipped', sub: 'Successful worldwide deployments.', bg: 'bg-stat-cyan' },
-              { val: '1M+', label: 'Lines of Code', sub: 'Maintained and contributed.', bg: 'bg-stat-teal' },
-              { val: '99%', label: 'Uptime Systems', sub: 'Highly available architectures.', bg: 'bg-stat-blue' }
-            ].map((stat, i) => (
-              <div key={i} className={`${stat.bg} p-10 md:p-16 rounded-2xl md:rounded-3xl h-[300px] md:h-[380px] flex flex-col justify-end shadow-premium border-subtle relative group overflow-hidden`}>
-                <div className="absolute top-10 right-10 opacity-[0.03] text-7xl md:text-9xl font-bold">{stat.val}</div>
-                <h3 className="text-5xl md:text-7xl font-bold mb-2 md:mb-4 tracking-tighter relative z-10">{stat.val}</h3>
-                <h4 className="text-lg md:text-xl font-bold uppercase mb-2 tracking-widest relative z-10">{stat.label}</h4>
-                <p className="text-xs text-text-muted font-semibold relative z-10 opacity-70">{stat.sub}</p>
-              </div>
-            ))}
+        {/* Experience Section: Career Matrix */}
+        <section id="experience" className="px-6 md:px-10 py-24 md:py-32 bg-[#eeeee4] relative">
+          <div className="max-w-7xl mx-auto">
+             <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 md:gap-0 mb-20 md:mb-32">
+                <div className="flex flex-col">
+                   <span className="text-[10px] font-mono font-black uppercase tracking-[0.5em] text-accent mb-6 block">Career_Trajectory</span>
+                   <h2 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.85]">Work <br /><span className="text-stroke">Experience</span></h2>
+                </div>
+                <div className="flex flex-col gap-6 max-w-sm">
+                   <p className="text-sm md:text-base font-medium leading-relaxed opacity-50">
+                      A chronological timeline of high-impact engineering roles, technical leadership, and digital infrastructure developments.
+                   </p>
+                   <div className="flex items-center gap-2 text-[9px] font-mono font-bold uppercase tracking-[0.3em] opacity-40">
+                      <div className="w-2 h-2 rounded-full border border-black/50"></div>
+                      <span>Hover to inspect records</span>
+                   </div>
+                </div>
+             </div>
+
+             <div className="flex flex-col border-t-2 border-black w-full">
+                {[
+                  { 
+                    role: 'Full Stack Developer', 
+                    company: 'Mentxtv', 
+                    period: 'Internship', 
+                    tags: ['Architecture', 'Full Stack Development', 'Optimization'], 
+                    desc: 'Designed and engineered end-to-end full stack solutions. Focused on optimizing system architecture, enhancing database performance, and building resilient API infrastructures for scalable applications.' 
+                  },
+                  { 
+                    role: 'Software Engineer', 
+                    company: 'Sisuni', 
+                    period: 'Internship', 
+                    tags: ['System Integration', 'UI/UX Implementation', 'Debugging'], 
+                    desc: 'Collaborated with cross-functional teams to deploy functional software modules. Responsible for system integration, frontend logic implementation, and rigorous performance testing and debugging.' 
+                  },
+                  { 
+                    role: 'Independent Developer', 
+                    company: 'Fiverr', 
+                    period: 'Freelance', 
+                    tags: ['Client Delivery', 'Custom Solutions', 'Rapid Prototyping'], 
+                    desc: 'Architected and delivered bespoke web solutions for international clients. Handled full project lifecycles from requirement gathering to rapid prototyping and final production deployment.' 
+                  }
+                ].map((exp, i) => (
+                   <div key={i} className="group relative border-b border-black/10 flex flex-col lg:flex-row lg:items-center py-12 md:py-16 gap-6 lg:gap-0 hover:bg-[#0a0a0a] hover:text-white transition-all duration-[600ms] ease-[cubic-bezier(0.19,1,0.22,1)] px-6 lg:px-12 -mx-6 lg:-mx-12 cursor-pointer overflow-hidden">
+                      
+                      {/* Interaction Accent Line */}
+                      <div className="absolute left-0 top-0 bottom-0 w-0 md:w-1.5 bg-accent scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-bottom ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
+
+                      {/* Period Column */}
+                      <div className="lg:w-3/12 relative z-10 transition-transform duration-500 group-hover:translate-x-2">
+                         <span className="text-[10px] font-mono font-black uppercase tracking-[0.3em] text-accent transition-colors">{exp.period}</span>
+                      </div>
+
+                      {/* Title Column */}
+                      <div className="lg:w-5/12 relative z-10 flex flex-col pr-8 transition-transform duration-500 delay-75 group-hover:translate-x-2">
+                         <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-3 duration-500 ease-out">{exp.role}</h3>
+                         <span className="text-[10px] font-bold uppercase tracking-widest opacity-40 group-hover:opacity-70 transition-opacity">_{exp.company}</span>
+                      </div>
+
+                      {/* Details Column */}
+                      <div className="lg:w-4/12 flex flex-col relative z-10 transition-transform duration-500 delay-100 group-hover:translate-x-2">
+                         <div className="flex gap-2 mb-4 hidden md:flex flex-wrap">
+                           {exp.tags.map(tag => (
+                             <span key={tag} className="text-[8px] font-mono font-bold border border-black/10 group-hover:border-white/20 rounded-full px-3 py-1 uppercase tracking-[0.2em] transition-colors">{tag}</span>
+                           ))}
+                         </div>
+                         <p className="text-xs md:text-sm font-medium leading-relaxed opacity-50 group-hover:opacity-80 transition-opacity">
+                            {exp.desc}
+                         </p>
+                      </div>
+
+                      {/* Floating Decorative Crosshair */}
+                      <div className="absolute top-1/2 right-12 -translate-y-1/2 w-6 h-6 opacity-0 group-hover:opacity-100 transition-all duration-700 rotate-90 group-hover:rotate-0 hidden lg:block text-accent">
+                         <span className="absolute top-1/2 left-0 w-full h-[2px] bg-accent -translate-y-1/2"></span>
+                         <span className="absolute top-0 left-1/2 w-[2px] h-full bg-accent -translate-x-1/2"></span>
+                      </div>
+                   </div>
+                ))}
+             </div>
           </div>
         </section>
 
-        {/* Booking Form Section */}
-        <section id="connect" className="px-6 md:px-10 py-32 md:py-52 pb-40 md:pb-64">
-          <div className="bg-card-grey rounded-2xl lg:rounded-3xl overflow-hidden flex flex-col lg:flex-row lg:min-h-[700px] shadow-premium border border-black/5">
-            <div className="w-full lg:w-5/12 group overflow-hidden relative h-[300px] lg:h-auto">
-              <img src="/images/photographer.png" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000" />
-              <div className="absolute inset-0 bg-accent/10 mix-blend-multiply opacity-0 group-hover:opacity-40 transition-all"></div>
+        {/* Engineering Blueprint Contact Section */}
+        <section id="connect" className="px-6 md:px-10 py-24 md:py-32 relative overflow-hidden bg-white">
+          {/* Millimeter Grid Texture */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+               style={{ backgroundImage: 'radial-gradient(#000 0.5px, transparent 0.5px)', backgroundSize: '20px 20px' }}></div>
+          
+          <div className="max-w-7xl mx-auto relative z-10">
+            {/* Header: Technical Index */}
+            <div className="flex items-center gap-6 mb-20 md:mb-32">
+               <span className="text-[10px] font-mono font-black text-accent uppercase tracking-[0.5em]">Section_05 // Connect</span>
+               <div className="flex-1 h-px bg-black opacity-5"></div>
+               <span className="text-[10px] font-mono opacity-20 uppercase tracking-widest hidden md:block">Lat: 12.9716° N // Lon: 77.5946° E</span>
             </div>
-            <div className="w-full lg:w-7/12 p-8 sm:p-16 lg:p-32 flex flex-col justify-center bg-white relative">
-              <div className="hidden lg:block absolute top-12 right-20 text-[10px] font-bold opacity-20 tracking-widest">EST. 2024 / CB</div>
-              <h2 className="text-4xl md:text-7xl font-bold uppercase mb-10 md:mb-16 leading-[0.85] tracking-tighter pt-8 lg:pt-0">Collaborate With <br /><span className="text-accent font-serif-italic normal-case tracking-normal">Charan Raj</span></h2>
-              <form className="space-y-6 md:space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                  <div className="space-y-2">
-                    <label className="text-[9px] font-extrabold uppercase tracking-widest opacity-40 ml-4 md:ml-6 block">Full Name</label>
-                    <input type="text" placeholder="JANE DOE" className="w-full px-6 md:px-10 py-5 md:py-7 rounded-full bg-light border-subtle text-[10px] md:text-[10px] font-extrabold focus:bg-white focus:ring-1 focus:ring-accent outline-none transition-all placeholder:text-black/20" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[9px] font-extrabold uppercase tracking-widest opacity-40 ml-4 md:ml-6 block">Project Type</label>
-                    <input type="text" placeholder="E-commerce App" className="w-full px-6 md:px-10 py-5 md:py-7 rounded-full bg-light border-subtle text-[10px] md:text-[10px] font-extrabold focus:bg-white focus:ring-1 focus:ring-accent outline-none transition-all placeholder:text-black/20" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+              
+              {/* Column 1: The Narrative & Status */}
+              <div className="lg:col-span-5 space-y-16">
+                <div>
+                   <h2 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.8] mb-8">Initiate <br /><span className="text-stroke">Brief</span></h2>
+                   <p className="text-sm md:text-base font-medium leading-relaxed opacity-50 max-w-sm">
+                      Currently accepting high-stakes engineering projects and strategic infrastructure partnerships.
+                   </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-8">
+                   <div className="flex flex-col gap-3">
+                      <span className="text-[9px] font-black uppercase tracking-widest opacity-20">System_Status</span>
+                      <div className="flex items-center gap-2">
+                         <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                         <span className="text-xs font-bold uppercase tracking-widest">Ready_to_Build</span>
+                      </div>
+                   </div>
+                   <div className="flex flex-col gap-3">
+                      <span className="text-[9px] font-black uppercase tracking-widest opacity-20">Current_Sync</span>
+                      <span className="text-xs font-mono font-bold tracking-tight">{time}</span>
+                   </div>
+                </div>
+              </div>
+
+              {/* Column 2: The Action Hub */}
+              <div className="lg:col-span-7">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+                   
+                   {/* Presence Slices */}
+                   <div className="flex flex-col gap-10">
+                      <span className="text-[9px] font-black uppercase tracking-widest opacity-20">Digital_Presence</span>
+                      <div className="flex flex-col gap-4">
+                         {[
+                           { name: 'GitHub', id: 'gh-link', label: 'Source_Control' },
+                           { name: 'LinkedIn', id: 'li-link', label: 'Network_Professional' },
+                           { name: 'Twitter', id: 'tw-link', label: 'Public_Broadcast' }
+                         ].map(link => (
+                           <a key={link.id} href="#" className="group flex items-center justify-between py-4 border-b border-black/5 hover:border-accent transition-all duration-500">
+                             <div className="flex flex-col">
+                                <span className="text-sm font-bold uppercase tracking-widest group-hover:text-accent transition-colors">{link.name}</span>
+                                <span className="text-[7px] font-mono opacity-20 uppercase tracking-[0.3em] font-black translate-y-1 group-hover:translate-y-0 group-hover:opacity-60 transition-all">{link.label}</span>
+                             </div>
+                             <svg className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                             </svg>
+                           </a>
+                         ))}
+                      </div>
+                   </div>
+
+                   {/* Terminal Form */}
+                   <div className="flex flex-col gap-10">
+                      <span className="text-[9px] font-black uppercase tracking-widest opacity-20">Inquiry_Buffer</span>
+                      <form className="space-y-8">
+                         <div className="space-y-4">
+                            <div className="relative group">
+                               <input type="text" placeholder="ID // EMAIL" className="w-full bg-transparent border-b-2 border-black/5 focus:border-accent py-4 outline-none text-xs font-black uppercase tracking-widest transition-all placeholder:opacity-20" />
+                               <div className="absolute top-0 right-0 text-[7px] font-mono opacity-0 group-focus-within:opacity-30 uppercase tracking-widest">Required</div>
+                            </div>
+                            <div className="relative group">
+                               <textarea rows="3" placeholder="BRIEF..." className="w-full bg-transparent border-b-2 border-black/5 focus:border-accent py-4 outline-none text-xs font-black uppercase tracking-widest transition-all placeholder:opacity-20 resize-none" />
+                               <div className="absolute top-0 right-0 text-[7px] font-mono opacity-0 group-focus-within:opacity-30 uppercase tracking-widest">Message_Body</div>
+                            </div>
+                         </div>
+                         <button type="button" className="group flex items-center gap-6 py-6 px-10 bg-black text-white rounded-xl hover:bg-accent transition-all duration-500 hover:scale-[1.02] shadow-2xl">
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em]">Execute_Request</span>
+                            <div className="w-8 h-px bg-white/30 group-hover:w-12 transition-all"></div>
+                         </button>
+                      </form>
+                   </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Terminal Decorations */}
+            <div className="mt-32 pt-12 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-8 opacity-20">
+               <div className="flex items-center gap-6 text-[8px] font-mono font-black uppercase tracking-widest">
+                  <span>Port_8080: Open</span>
+                  <span>Protocol: SSH_JS</span>
+                  <span>Encryption: 256_AES</span>
+               </div>
+               <span className="text-[8px] font-mono font-black uppercase tracking-widest">Inbound_Session_001_Active</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Premium Command Footer - Dark Edition */}
+        <footer className="px-6 md:px-10 py-16 md:py-24 bg-[#0a0a0a] text-white relative overflow-hidden">
+          {/* Subtle Background Mark */}
+          <div className="absolute -bottom-32 md:-bottom-48 -left-10 text-[30vw] font-black uppercase tracking-tighter opacity-[0.03] pointer-events-none select-none text-white overflow-hidden">
+            CHARAN
+          </div>
+
+          <div className="flex flex-col gap-20 relative z-10">
+            {/* Top Hub: Navigation & Metadata */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+              <div className="md:col-span-4 flex flex-col space-y-8">
+                <div className="text-xl md:text-2xl font-black uppercase tracking-tighter">Charan Raj <span className="text-accent">B</span></div>
+                <div className="flex flex-col space-y-4">
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent opacity-80">Architecture</span>
+                  <p className="text-sm font-medium leading-relaxed opacity-40 max-w-xs">
+                    Specialized in building high-performance, scalable digital infrastructure with an aesthetic-first mindset.
+                  </p>
+                </div>
+              </div>
+
+              <div className="md:col-span-5 grid grid-cols-2 gap-8">
+                <div className="flex flex-col space-y-6">
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent opacity-80">Explore</span>
+                  <div className="flex flex-col space-y-3">
+                    {['About', 'Projects', 'Expertise', 'Experience'].map(item => (
+                      <a key={item} href={`#${item.toLowerCase()}`} className="text-xs font-bold uppercase tracking-widest hover:text-accent transition-all duration-300 w-fit opacity-60 hover:opacity-100">
+                        {item}
+                      </a>
+                    ))}
                   </div>
                 </div>
-                <button type="button" className="w-full py-6 md:py-8 bg-accent text-white rounded-full text-[10px] font-bold uppercase tracking-[0.4em] hover:brightness-110 hover:shadow-premium transition-all">Submit Inquiry</button>
-                <p className="text-center text-[9px] font-extrabold uppercase tracking-[0.2em] opacity-40 mt-8 md:mt-10">Available for remote contracts worldwide.</p>
-              </form>
-            </div>
-          </div>
-        </section>
+                <div className="flex flex-col space-y-6">
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent opacity-80">Status Update</span>
+                  <div className="flex flex-col space-y-4">
+                    <div className="flex items-center gap-3">
+                       <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                       <span className="text-xs font-bold uppercase tracking-widest opacity-80">Active // Remote</span>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                       <span className="text-[9px] font-mono opacity-30 uppercase">Local Time (IST)</span>
+                       <span className="text-xs font-mono font-bold text-accent">{time}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-        {/* Footer */}
-        <footer className="px-6 md:px-10 py-16 md:py-20 border-t border-black/5 flex flex-col space-y-12 md:space-y-16">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0">
-            <div className="text-xs font-bold uppercase tracking-[0.4em] text-center md:text-left">Charan Raj B</div>
-            <div className="flex flex-wrap justify-center items-center gap-6 md:space-x-12 text-[10px] font-extrabold uppercase tracking-[0.2em]">
-              {['GitHub', 'LinkedIn', 'Twitter', 'Journal', 'Contact'].map(link => (
-                <Link key={link} href="#" className="hover:text-accent transition-all opacity-40 hover:opacity-100">{link}</Link>
-              ))}
+              <div className="md:col-span-3 flex flex-col md:items-end space-y-8">
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent opacity-80">Social Hub</span>
+                <div className="flex gap-4">
+                  {[
+                    { id: 'GH', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg> },
+                    { id: 'LI', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.154z"/></svg> },
+                  ].map(social => (
+                    <motion.a 
+                      key={social.id} 
+                      href="#" 
+                      whileHover={{ y: -5, scale: 1.1, backgroundColor: 'var(--accent)', color: 'white' }}
+                      className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center bg-white/5 transition-all duration-300 shadow-sm text-white"
+                    >
+                      {social.icon}
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="flex space-x-4">
-              {['GH', 'IN'].map(social => (
-                <span key={social} className="w-10 h-10 md:w-12 md:h-12 border border-black/10 rounded-full flex items-center justify-center text-[10px] font-bold hover:bg-black hover:text-white transition-all cursor-pointer shadow-sm">{social}</span>
-              ))}
+
+            {/* Bottom Credit Line */}
+            <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="flex items-center gap-4 text-[9px] font-black uppercase tracking-widest opacity-20">
+                 <span>© 2024</span>
+                 <div className="w-1 h-1 rounded-full bg-white/20"></div>
+                 <span>Engineered by Charan Raj B</span>
+              </div>
+              
+              <div className="flex items-center gap-8 font-mono text-[9px] font-bold uppercase tracking-[0.2em] opacity-30">
+                 <div className="flex gap-2">
+                    <span className="text-accent">VER</span>
+                    <span>4.0.2_KINETIC</span>
+                 </div>
+                 <div className="hidden md:flex gap-2">
+                    <span className="text-accent">LOC</span>
+                    <span>12.9716° N // 77.5946° E</span>
+                 </div>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 opacity-30 text-[8px] md:text-[9px] font-bold uppercase tracking-widest text-center md:text-left">
-            <p>© 2024 Charan Raj B — Software Engineering</p>
-            <p>Built for Performance</p>
           </div>
         </footer>
       </main>
