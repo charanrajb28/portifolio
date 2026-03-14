@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer, SiWebgl, SiNodedotjs, SiSocketdotio, SiGraphql, SiExpress, SiRedis, SiDocker, SiVercel, SiGithubactions, SiPostgresql, SiMongodb, SiPrisma } from 'react-icons/si'
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer, SiWebgl, SiNodedotjs, SiSocketdotio, SiGraphql, SiExpress, SiRedis, SiDocker, SiVercel, SiGithubactions, SiPostgresql, SiMongodb, SiPrisma, SiFirebase, SiSpringboot } from 'react-icons/si'
 import { FaAws } from 'react-icons/fa'
 
 export default function Home() {
@@ -195,14 +195,14 @@ export default function Home() {
                     </div>
 
                     {/* The Multi-Layer Kinetic Stack */}
-                    <div className="relative w-full aspect-[3/2] z-10">
+                    <div className="relative w-full aspect-[5/6] z-10">
                       {/* Depth Layer 1: Blurred Ghost */}
                       <div className="absolute inset-4 bg-accent/5 rounded-[40px] blur-2xl scale-95 group-hover:scale-105 group-hover:bg-accent/10 transition-all duration-1000"></div>
 
                       {/* Depth Layer 2: Main Image Frame */}
                       <div className="relative w-full h-full overflow-hidden rounded-[40px] shadow-2xl transition-transform duration-700 ease-out group-hover:-translate-y-2 group-hover:rotate-1">
                         <img
-                          src="/images/photographer.png"
+                          src="/image.png"
                           className="w-full h-full object-cover grayscale brightness-110 contrast-[1.15] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[2000ms] cubic-bezier(0.2, 1, 0.2, 1)"
                         />
 
@@ -247,7 +247,7 @@ export default function Home() {
                     className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 z-40 group/resume-hub"
                   >
                     <a
-                      href="/resume.txt"
+                      href="/charan_raj_b_intern_resume.pdf"
                       download
                       className="relative block bg-[#0a0a0a] text-white px-4 md:px-5 py-3 md:py-4 rounded-xl md:rounded-2xl shadow-[0_15px_30px_rgba(0,0,0,0.4)] border border-white/5 overflow-hidden group/resume-btn transition-all duration-500 hover:scale-105 active:scale-95"
                     >
@@ -300,7 +300,7 @@ export default function Home() {
           <div className="flex flex-col lg:grid lg:grid-cols-12 lg:grid-rows-[1.6fr_1fr] gap-6 lg:h-[800px]">
             {/* 1. Large Portrait: Spans 5 columns and both rows */}
             <div className="lg:col-span-5 lg:row-span-2 relative group overflow-hidden rounded-2xl shadow-premium h-[450px] lg:h-full cursor-pointer">
-              <img src="/images/hero-model.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-50" />
+              <img src="/image1.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-50" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 md:p-12 transition-all duration-500">
                 <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-4 transition-transform duration-500 group-hover:-translate-y-2 font-mono">Profile // 01</p>
                 <h3 className="text-4xl md:text-6xl text-white uppercase leading-[0.85] tracking-tighter transition-transform duration-500 group-hover:-translate-y-2">About <br /> <span className="font-serif-italic text-accent normal-case italic">Me</span></h3>
@@ -315,7 +315,7 @@ export default function Home() {
 
             {/* 2. Education Card: Spans 7 columns in the top row */}
             <div className="lg:col-span-7 lg:row-span-1 relative group overflow-hidden rounded-2xl shadow-premium cursor-pointer h-[350px] lg:h-full">
-              <img src="/images/mosaic-2.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-[0.3]" />
+              <img src="/images/college.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-[0.3]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 md:p-10 opacity-0 group-hover:opacity-100 transition-all duration-500">
                 <div className="flex justify-between items-start mb-4">
                   <div className="space-y-1">
@@ -324,7 +324,7 @@ export default function Home() {
                   </div>
                   <div className="px-4 py-2 border border-accent/30 rounded-full text-accent font-mono text-sm font-bold">GPA: 8.5</div>
                 </div>
-                
+
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-4 border-t border-white/10">
                   <p className="text-white/80 text-sm font-medium leading-relaxed max-w-md">
                     B.E. in Computer Science and Engineering. Specialized in architecting robust digital systems and high-performance algorithms.
@@ -340,7 +340,7 @@ export default function Home() {
 
             {/* 3. Vision Card: Spans 5 columns in the bottom row */}
             <div className="lg:col-span-5 lg:row-span-1 relative group overflow-hidden rounded-2xl shadow-premium h-[300px] lg:h-full cursor-pointer">
-              <img src="/images/mosaic-1.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-50" />
+              <img src="/images/vision.png" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-50" />
               <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-500"></div>
               <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-10">
                 <h3 className="text-3xl md:text-4xl text-white uppercase leading-[0.85] tracking-tighter transition-transform duration-500 group-hover:-translate-y-2">Vision & <span className="text-accent">Drive</span></h3>
@@ -356,7 +356,7 @@ export default function Home() {
             <div className="lg:col-span-2 lg:row-span-1 bg-[#111] border border-white/5 rounded-2xl p-6 md:p-8 flex flex-col justify-center text-white shadow-2xl relative overflow-hidden group cursor-pointer transition-all duration-500 hover:border-accent/30 h-[250px] lg:h-full">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 w-9 h-9 border border-white/10 rounded-full flex items-center justify-center text-[9px] font-mono font-bold text-accent transition-all duration-500 group-hover:border-accent group-hover:rotate-[360deg]">LANG</div>
-              
+
               <div className="relative z-10 mt-6 space-y-4">
                 <div className="space-y-1">
                   <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white/40 group-hover:text-accent transition-colors duration-500">Stack</p>
@@ -375,7 +375,7 @@ export default function Home() {
                         <span className="text-[7px] font-mono text-white/40">{lang.label}</span>
                       </div>
                       <div className="h-[2px] w-full bg-white/5 rounded-full overflow-hidden">
-                        <motion.div 
+                        <motion.div
                           initial={{ width: 0 }}
                           whileInView={{ width: lang.level }}
                           transition={{ duration: 1.5, delay: 0.5 + (idx * 0.1) }}
@@ -411,35 +411,111 @@ export default function Home() {
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {[
-              { title: 'E-Commerce Platform', brand: 'NextStore', type: 'Full Stack', image: '/images/hero-model.png' },
-              { title: 'Global Banking App', brand: 'FintechDash', type: 'Architecture', image: '/images/mosaic-1.png' },
-              { title: 'Luxury Travel Booking', brand: 'WanderLuxe', type: 'Frontend', image: '/images/mosaic-2.png' },
-              { title: 'Healthcare System UI', brand: 'MedCore', type: 'UI/Engineering', image: '/images/cups.png' }
+              {
+                title: 'Advanced chess training environment with real-time interactive capabilities.',
+                brand: 'Chess Academy',
+                type: 'Interactive Platform',
+                image: '/images/chess.png',
+                url: 'https://chess-platfrom.vercel.app/',
+                tech: [
+                  { name: 'Next.js', icon: <SiNextdotjs /> },
+                  { name: 'Firebase', icon: <SiFirebase /> },
+                  { name: 'WebSocket', icon: <SiSocketdotio /> }
+                ]
+              },
+              {
+                title: 'Full-stack resource management system for enterprise-grade hardware tracking.',
+                brand: 'Bio Track',
+                type: 'Tracing System',
+                image: '/images/biotrack.png',
+                url: 'https://equipment-appliaction-project-1.onrender.com',
+                tech: [
+                  { name: 'Spring Boot', icon: <SiSpringboot /> },
+                  { name: 'Next.js', icon: <SiNextdotjs /> },
+                  { name: 'PostgreSQL', icon: <SiPostgresql /> }
+                ]
+              },
+              {
+                title: 'Scalable community hub designed for high-stakes competition and hackathons.',
+                brand: 'Hackaybe',
+                type: 'Community Hub',
+                image: '/images/hackaybe.png',
+                url: 'https://www.hackaybe.space/',
+                tech: [
+                  { name: 'Vercel', icon: <SiVercel /> },
+                  { name: 'Next.js', icon: <SiNextdotjs /> },
+                  { name: 'AWS', icon: <FaAws /> },
+                  { name: 'Postgres', icon: <SiPostgresql /> }
+                ]
+              },
+              {
+                title: 'Low-latency real-time messaging engine with persistent data synchronization.',
+                brand: 'Nexus Chat',
+                type: 'Communication Engine',
+                image: '/images/chatting.png',
+                url: 'https://chatting-application-f202.onrender.com',
+                tech: [
+                  { name: 'Node.js', icon: <SiNodedotjs /> },
+                  { name: 'WebSockets', icon: <SiSocketdotio /> },
+                  { name: 'Firebase', icon: <SiFirebase /> },
+                  { name: 'MongoDB', icon: <SiMongodb /> }
+                ]
+              }
             ].map((project, i) => (
-              <div key={i} className="group flex flex-col w-[80vw] md:w-[45vw] lg:w-[32vw] shrink-0 snap-center">
+              <div key={i} className="group flex flex-col w-[85vw] md:w-[50vw] lg:w-[35vw] shrink-0 snap-center">
                 {/* Project Image Area */}
-                <div className="w-full aspect-video overflow-hidden rounded-2xl shadow-premium relative mb-5">
-                  <img src={project.image} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors duration-500"></div>
+                <div className="w-full aspect-[16/10] overflow-hidden rounded-2xl shadow-premium relative mb-6">
+                  <img src={project.image} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-black/5 group-hover:bg-black/20 transition-colors duration-500"></div>
+
+                  {/* Floating Tech Badges Icon-based */}
+                  <div className="absolute top-4 left-4 flex flex-wrap gap-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    {project.tech.map(t => (
+                      <span key={t.name} className="flex items-center gap-1.5 px-2.5 py-1.5 bg-black/80 backdrop-blur-md text-[8px] font-bold text-white uppercase tracking-widest rounded-sm border border-white/10">
+                        <span className="text-accent text-xs">{t.icon}</span>
+                        {t.name}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Project Details Box */}
-                <div className="flex flex-col flex-grow cursor-pointer">
-                  <div className="flex justify-between items-center mb-4 md:mb-5">
-                    <span className="text-accent text-xs md:text-sm font-bold uppercase tracking-widest">{project.type}</span>
-                    <span className="text-text-muted/60 text-xs font-extrabold uppercase tracking-[0.4em] transition-colors group-hover:text-accent">{String(i + 1).padStart(2, '0')}</span>
+                <div className="flex flex-col flex-grow">
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="text-accent text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">{project.type}</span>
+                    <span className="text-black/20 text-xs font-mono font-bold">{String(i + 1).padStart(2, '0')}</span>
                   </div>
-                  <h4 className="text-3xl md:text-5xl font-bold uppercase leading-none mb-3 group-hover:text-accent transition-colors">{project.brand}</h4>
-                  <p className="text-sm md:text-base font-medium text-text-muted leading-relaxed max-w-md mb-8 md:mb-10">{project.title}</p>
 
-                  {/* Integrated Action Buttons */}
-                  <div className="flex flex-wrap items-center gap-3 md:gap-4 mt-auto">
-                    <a href="#" onClick={(e) => e.preventDefault()} className="border border-black text-black px-6 md:px-8 py-3 md:py-4 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2 shrink-0">
-                      Live View <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                  <h4 className="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none mb-4 group-hover:text-accent transition-colors duration-300">
+                    {project.brand}
+                  </h4>
+
+                  <p className="text-sm font-medium text-black/60 leading-relaxed mb-8 h-12 line-clamp-2">
+                    {project.title}
+                  </p>
+
+                  {/* Actions */}
+                  <div className="flex items-center gap-4 mt-auto">
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/btn relative h-12 px-8 overflow-hidden rounded-full bg-black text-white flex items-center justify-center gap-3 transition-all duration-500 hover:scale-105 active:scale-95"
+                    >
+                      <div className="absolute inset-0 bg-accent translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500"></div>
+                      <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.2em]">View Project</span>
+                      <svg className="relative z-10 w-4 h-4 transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
                     </a>
-                    <a href="#" onClick={(e) => e.preventDefault()} className="border border-black/10 text-text-muted px-6 md:px-8 py-3 md:py-4 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] hover:border-black hover:text-black transition-all flex items-center justify-center gap-2 shrink-0">
-                      <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg> GitHub
-                    </a>
+
+                    <div className="flex items-center gap-2">
+                      {project.tech.map((t, idx) => (
+                        <div key={idx} className="w-8 h-8 rounded-full border border-black/5 bg-black/[0.02] flex items-center justify-center text-black/40 hover:text-accent hover:border-accent/30 transition-all duration-300" title={t.name}>
+                          <span className="text-sm">{t.icon}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -495,7 +571,7 @@ export default function Home() {
                       <div key={idx} className="flex flex-col items-center gap-2.5 group/icon cursor-pointer" style={{ transitionDelay: `${idx * 50}ms` }}>
                         <div title={tool.name} className="w-12 h-12 md:w-14 md:h-14 bg-[#1a1a1a] border border-white/5 rounded-full flex items-center justify-center text-white/50 group-hover/icon:bg-[#222] group-hover/icon:text-accent group-hover/icon:border-accent/30 transition-all duration-300 shadow-sm group-hover/icon:scale-110 group-hover/icon:-translate-y-1">
                           <div className="w-6 h-6 md:w-7 md:h-7 flex items-center justify-center">
-                             {tool.svg}
+                            {tool.svg}
                           </div>
                         </div>
                         <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white/30 group-hover/icon:text-white transition-colors duration-300">{tool.name}</span>
@@ -534,7 +610,7 @@ export default function Home() {
                       <div key={idx} className="flex flex-col items-center gap-2.5 group/icon cursor-pointer" style={{ transitionDelay: `${idx * 50}ms` }}>
                         <div title={tool.name} className="w-12 h-12 md:w-14 md:h-14 bg-[#1a1a1a] border border-white/5 rounded-full flex items-center justify-center text-white/50 group-hover/icon:bg-[#222] group-hover/icon:text-accent group-hover/icon:border-accent/30 transition-all duration-300 shadow-sm group-hover/icon:scale-110 group-hover/icon:-translate-y-1">
                           <div className="w-6 h-6 flex items-center justify-center">
-                             {tool.svg}
+                            {tool.svg}
                           </div>
                         </div>
                         <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white/30 group-hover/icon:text-white transition-colors duration-300">{tool.name}</span>
@@ -576,7 +652,7 @@ export default function Home() {
                       <div key={idx} className="flex flex-col items-center gap-2.5 group/icon cursor-pointer" style={{ transitionDelay: `${idx * 50}ms` }}>
                         <div title={tool.name} className="w-12 h-12 md:w-14 md:h-14 bg-[#1a1a1a] border border-white/5 rounded-full flex items-center justify-center text-white/50 group-hover/icon:bg-[#222] group-hover/icon:text-accent group-hover/icon:border-accent/30 transition-all duration-300 shadow-sm group-hover/icon:scale-110 group-hover/icon:-translate-y-1">
                           <div className="w-6 h-6 flex items-center justify-center">
-                             {tool.svg}
+                            {tool.svg}
                           </div>
                         </div>
                         <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white/30 group-hover/icon:text-white transition-colors duration-300">{tool.name}</span>
@@ -619,7 +695,7 @@ export default function Home() {
                       <div key={idx} className="flex flex-col items-center gap-2.5 group/icon cursor-pointer" style={{ transitionDelay: `${idx * 100}ms` }}>
                         <div title={tool.name} className="w-14 h-14 md:w-16 md:h-16 bg-[#1a1a1a] border border-white/5 rounded-full flex items-center justify-center text-white/50 group-hover/icon:bg-[#222] group-hover/icon:text-accent group-hover/icon:border-accent/30 transition-all duration-300 shadow-xl group-hover/icon:scale-110 group-hover/icon:-translate-y-1">
                           <div className="w-7 h-7 flex items-center justify-center">
-                             {tool.svg}
+                            {tool.svg}
                           </div>
                         </div>
                         <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white/30 group-hover/icon:text-white transition-colors duration-300">{tool.name}</span>
@@ -633,7 +709,7 @@ export default function Home() {
           </div>
 
           <div className="mt-16 md:mt-24 flex justify-center relative z-10 w-full">
-            <a href="/resume.txt" download className="bg-accent text-white px-10 py-5 rounded-full text-xs font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all shadow-2xl flex items-center gap-3 hover:-translate-y-1">
+            <a href="/charan_raj_b_intern_resume.pdf" download className="bg-accent text-white px-10 py-5 rounded-full text-xs font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all shadow-2xl flex items-center gap-3 hover:-translate-y-1">
               Download Full Resume
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
             </a>
@@ -643,171 +719,171 @@ export default function Home() {
         {/* Experience Section: Career Matrix */}
         <section id="experience" className="px-6 md:px-10 py-24 md:py-32 bg-[#eeeee4] relative">
           <div className="max-w-7xl mx-auto">
-             <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 md:gap-0 mb-20 md:mb-32">
-                <div className="flex flex-col">
-                   <span className="text-[10px] font-mono font-black uppercase tracking-[0.5em] text-accent mb-6 block">Career_Trajectory</span>
-                   <h2 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.85]">Work <br /><span className="text-stroke">Experience</span></h2>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 md:gap-0 mb-20 md:mb-32">
+              <div className="flex flex-col">
+                <span className="text-[10px] font-mono font-black uppercase tracking-[0.5em] text-accent mb-6 block">Career_Trajectory</span>
+                <h2 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.85]">Work <br /><span className="text-stroke">Experience</span></h2>
+              </div>
+              <div className="flex flex-col gap-6 max-w-sm">
+                <p className="text-sm md:text-base font-medium leading-relaxed opacity-50">
+                  A chronological timeline of high-impact engineering roles, technical leadership, and digital infrastructure developments.
+                </p>
+                <div className="flex items-center gap-2 text-[9px] font-mono font-bold uppercase tracking-[0.3em] opacity-40">
+                  <div className="w-2 h-2 rounded-full border border-black/50"></div>
+                  <span>Hover to inspect records</span>
                 </div>
-                <div className="flex flex-col gap-6 max-w-sm">
-                   <p className="text-sm md:text-base font-medium leading-relaxed opacity-50">
-                      A chronological timeline of high-impact engineering roles, technical leadership, and digital infrastructure developments.
-                   </p>
-                   <div className="flex items-center gap-2 text-[9px] font-mono font-bold uppercase tracking-[0.3em] opacity-40">
-                      <div className="w-2 h-2 rounded-full border border-black/50"></div>
-                      <span>Hover to inspect records</span>
-                   </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col border-t-2 border-black w-full">
+              {[
+                {
+                  role: 'Full Stack Developer',
+                  company: 'Mentxtv',
+                  period: 'Internship',
+                  tags: ['Architecture', 'Full Stack Development', 'Optimization'],
+                  desc: 'Designed and engineered end-to-end full stack solutions. Focused on optimizing system architecture, enhancing database performance, and building resilient API infrastructures for scalable applications.'
+                },
+                {
+                  role: 'Software Engineer',
+                  company: 'Sisuni',
+                  period: 'Internship',
+                  tags: ['System Integration', 'UI/UX Implementation', 'Debugging'],
+                  desc: 'Collaborated with cross-functional teams to deploy functional software modules. Responsible for system integration, frontend logic implementation, and rigorous performance testing and debugging.'
+                },
+                {
+                  role: 'Independent Developer',
+                  company: 'Fiverr',
+                  period: 'Freelance',
+                  tags: ['Client Delivery', 'Custom Solutions', 'Rapid Prototyping'],
+                  desc: 'Architected and delivered bespoke web solutions for international clients. Handled full project lifecycles from requirement gathering to rapid prototyping and final production deployment.'
+                }
+              ].map((exp, i) => (
+                <div key={i} className="group relative border-b border-black/10 flex flex-col lg:flex-row lg:items-center py-12 md:py-16 gap-6 lg:gap-0 hover:bg-[#0a0a0a] hover:text-white transition-all duration-[600ms] ease-[cubic-bezier(0.19,1,0.22,1)] px-6 lg:px-12 -mx-6 lg:-mx-12 cursor-pointer overflow-hidden">
+
+                  {/* Interaction Accent Line */}
+                  <div className="absolute left-0 top-0 bottom-0 w-0 md:w-1.5 bg-accent scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-bottom ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
+
+                  {/* Period Column */}
+                  <div className="lg:w-3/12 relative z-10 transition-transform duration-500 group-hover:translate-x-2">
+                    <span className="text-[10px] font-mono font-black uppercase tracking-[0.3em] text-accent transition-colors">{exp.period}</span>
+                  </div>
+
+                  {/* Title Column */}
+                  <div className="lg:w-5/12 relative z-10 flex flex-col pr-8 transition-transform duration-500 delay-75 group-hover:translate-x-2">
+                    <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-3 duration-500 ease-out">{exp.role}</h3>
+                    <span className="text-[10px] font-bold uppercase tracking-widest opacity-40 group-hover:opacity-70 transition-opacity">_{exp.company}</span>
+                  </div>
+
+                  {/* Details Column */}
+                  <div className="lg:w-4/12 flex flex-col relative z-10 transition-transform duration-500 delay-100 group-hover:translate-x-2">
+                    <div className="flex gap-2 mb-4 hidden md:flex flex-wrap">
+                      {exp.tags.map(tag => (
+                        <span key={tag} className="text-[8px] font-mono font-bold border border-black/10 group-hover:border-white/20 rounded-full px-3 py-1 uppercase tracking-[0.2em] transition-colors">{tag}</span>
+                      ))}
+                    </div>
+                    <p className="text-xs md:text-sm font-medium leading-relaxed opacity-50 group-hover:opacity-80 transition-opacity">
+                      {exp.desc}
+                    </p>
+                  </div>
+
+                  {/* Floating Decorative Crosshair */}
+                  <div className="absolute top-1/2 right-12 -translate-y-1/2 w-6 h-6 opacity-0 group-hover:opacity-100 transition-all duration-700 rotate-90 group-hover:rotate-0 hidden lg:block text-accent">
+                    <span className="absolute top-1/2 left-0 w-full h-[2px] bg-accent -translate-y-1/2"></span>
+                    <span className="absolute top-0 left-1/2 w-[2px] h-full bg-accent -translate-x-1/2"></span>
+                  </div>
                 </div>
-             </div>
-
-             <div className="flex flex-col border-t-2 border-black w-full">
-                {[
-                  { 
-                    role: 'Full Stack Developer', 
-                    company: 'Mentxtv', 
-                    period: 'Internship', 
-                    tags: ['Architecture', 'Full Stack Development', 'Optimization'], 
-                    desc: 'Designed and engineered end-to-end full stack solutions. Focused on optimizing system architecture, enhancing database performance, and building resilient API infrastructures for scalable applications.' 
-                  },
-                  { 
-                    role: 'Software Engineer', 
-                    company: 'Sisuni', 
-                    period: 'Internship', 
-                    tags: ['System Integration', 'UI/UX Implementation', 'Debugging'], 
-                    desc: 'Collaborated with cross-functional teams to deploy functional software modules. Responsible for system integration, frontend logic implementation, and rigorous performance testing and debugging.' 
-                  },
-                  { 
-                    role: 'Independent Developer', 
-                    company: 'Fiverr', 
-                    period: 'Freelance', 
-                    tags: ['Client Delivery', 'Custom Solutions', 'Rapid Prototyping'], 
-                    desc: 'Architected and delivered bespoke web solutions for international clients. Handled full project lifecycles from requirement gathering to rapid prototyping and final production deployment.' 
-                  }
-                ].map((exp, i) => (
-                   <div key={i} className="group relative border-b border-black/10 flex flex-col lg:flex-row lg:items-center py-12 md:py-16 gap-6 lg:gap-0 hover:bg-[#0a0a0a] hover:text-white transition-all duration-[600ms] ease-[cubic-bezier(0.19,1,0.22,1)] px-6 lg:px-12 -mx-6 lg:-mx-12 cursor-pointer overflow-hidden">
-                      
-                      {/* Interaction Accent Line */}
-                      <div className="absolute left-0 top-0 bottom-0 w-0 md:w-1.5 bg-accent scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-bottom ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
-
-                      {/* Period Column */}
-                      <div className="lg:w-3/12 relative z-10 transition-transform duration-500 group-hover:translate-x-2">
-                         <span className="text-[10px] font-mono font-black uppercase tracking-[0.3em] text-accent transition-colors">{exp.period}</span>
-                      </div>
-
-                      {/* Title Column */}
-                      <div className="lg:w-5/12 relative z-10 flex flex-col pr-8 transition-transform duration-500 delay-75 group-hover:translate-x-2">
-                         <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-3 duration-500 ease-out">{exp.role}</h3>
-                         <span className="text-[10px] font-bold uppercase tracking-widest opacity-40 group-hover:opacity-70 transition-opacity">_{exp.company}</span>
-                      </div>
-
-                      {/* Details Column */}
-                      <div className="lg:w-4/12 flex flex-col relative z-10 transition-transform duration-500 delay-100 group-hover:translate-x-2">
-                         <div className="flex gap-2 mb-4 hidden md:flex flex-wrap">
-                           {exp.tags.map(tag => (
-                             <span key={tag} className="text-[8px] font-mono font-bold border border-black/10 group-hover:border-white/20 rounded-full px-3 py-1 uppercase tracking-[0.2em] transition-colors">{tag}</span>
-                           ))}
-                         </div>
-                         <p className="text-xs md:text-sm font-medium leading-relaxed opacity-50 group-hover:opacity-80 transition-opacity">
-                            {exp.desc}
-                         </p>
-                      </div>
-
-                      {/* Floating Decorative Crosshair */}
-                      <div className="absolute top-1/2 right-12 -translate-y-1/2 w-6 h-6 opacity-0 group-hover:opacity-100 transition-all duration-700 rotate-90 group-hover:rotate-0 hidden lg:block text-accent">
-                         <span className="absolute top-1/2 left-0 w-full h-[2px] bg-accent -translate-y-1/2"></span>
-                         <span className="absolute top-0 left-1/2 w-[2px] h-full bg-accent -translate-x-1/2"></span>
-                      </div>
-                   </div>
-                ))}
-             </div>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* Engineering Blueprint Contact Section */}
         <section id="connect" className="px-6 md:px-10 py-24 md:py-32 relative overflow-hidden bg-white">
           {/* Millimeter Grid Texture */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-               style={{ backgroundImage: 'radial-gradient(#000 0.5px, transparent 0.5px)', backgroundSize: '20px 20px' }}></div>
-          
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+            style={{ backgroundImage: 'radial-gradient(#000 0.5px, transparent 0.5px)', backgroundSize: '20px 20px' }}></div>
+
           <div className="max-w-7xl mx-auto relative z-10">
             {/* Header: Technical Index */}
             <div className="flex items-center gap-6 mb-20 md:mb-32">
-               <span className="text-[10px] font-mono font-black text-accent uppercase tracking-[0.5em]">Section_05 // Connect</span>
-               <div className="flex-1 h-px bg-black opacity-5"></div>
-               <span className="text-[10px] font-mono opacity-20 uppercase tracking-widest hidden md:block">Lat: 12.9716° N // Lon: 77.5946° E</span>
+              <span className="text-[10px] font-mono font-black text-accent uppercase tracking-[0.5em]">Section_05 // Connect</span>
+              <div className="flex-1 h-px bg-black opacity-5"></div>
+              <span className="text-[10px] font-mono opacity-20 uppercase tracking-widest hidden md:block">Lat: 12.9716° N // Lon: 77.5946° E</span>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-              
+
               {/* Column 1: The Narrative & Status */}
               <div className="lg:col-span-5 space-y-16">
                 <div>
-                   <h2 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.8] mb-8">Initiate <br /><span className="text-stroke">Brief</span></h2>
-                   <p className="text-sm md:text-base font-medium leading-relaxed opacity-50 max-w-sm">
-                      Currently accepting high-stakes engineering projects and strategic infrastructure partnerships.
-                   </p>
+                  <h2 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.8] mb-8">Initiate <br /><span className="text-stroke">Brief</span></h2>
+                  <p className="text-sm md:text-base font-medium leading-relaxed opacity-50 max-w-sm">
+                    Currently accepting high-stakes engineering projects and strategic infrastructure partnerships.
+                  </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-8">
-                   <div className="flex flex-col gap-3">
-                      <span className="text-[9px] font-black uppercase tracking-widest opacity-20">System_Status</span>
-                      <div className="flex items-center gap-2">
-                         <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
-                         <span className="text-xs font-bold uppercase tracking-widest">Ready_to_Build</span>
-                      </div>
-                   </div>
-                   <div className="flex flex-col gap-3">
-                      <span className="text-[9px] font-black uppercase tracking-widest opacity-20">Current_Sync</span>
-                      <span className="text-xs font-mono font-bold tracking-tight">{time}</span>
-                   </div>
+                  <div className="flex flex-col gap-3">
+                    <span className="text-[9px] font-black uppercase tracking-widest opacity-20">System_Status</span>
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                      <span className="text-xs font-bold uppercase tracking-widest">Ready_to_Build</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <span className="text-[9px] font-black uppercase tracking-widest opacity-20">Current_Sync</span>
+                    <span className="text-xs font-mono font-bold tracking-tight">{time}</span>
+                  </div>
                 </div>
               </div>
 
               {/* Column 2: The Action Hub */}
               <div className="lg:col-span-7">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
-                   
-                   {/* Presence Slices */}
-                   <div className="flex flex-col gap-10">
-                      <span className="text-[9px] font-black uppercase tracking-widest opacity-20">Digital_Presence</span>
-                      <div className="flex flex-col gap-4">
-                         {[
-                           { name: 'GitHub', id: 'gh-link', label: 'Source_Control' },
-                           { name: 'LinkedIn', id: 'li-link', label: 'Network_Professional' },
-                           { name: 'Twitter', id: 'tw-link', label: 'Public_Broadcast' }
-                         ].map(link => (
-                           <a key={link.id} href="#" className="group flex items-center justify-between py-4 border-b border-black/5 hover:border-accent transition-all duration-500">
-                             <div className="flex flex-col">
-                                <span className="text-sm font-bold uppercase tracking-widest group-hover:text-accent transition-colors">{link.name}</span>
-                                <span className="text-[7px] font-mono opacity-20 uppercase tracking-[0.3em] font-black translate-y-1 group-hover:translate-y-0 group-hover:opacity-60 transition-all">{link.label}</span>
-                             </div>
-                             <svg className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                             </svg>
-                           </a>
-                         ))}
-                      </div>
-                   </div>
 
-                   {/* Terminal Form */}
-                   <div className="flex flex-col gap-10">
-                      <span className="text-[9px] font-black uppercase tracking-widest opacity-20">Inquiry_Buffer</span>
-                      <form className="space-y-8">
-                         <div className="space-y-4">
-                            <div className="relative group">
-                               <input type="text" placeholder="ID // EMAIL" className="w-full bg-transparent border-b-2 border-black/5 focus:border-accent py-4 outline-none text-xs font-black uppercase tracking-widest transition-all placeholder:opacity-20" />
-                               <div className="absolute top-0 right-0 text-[7px] font-mono opacity-0 group-focus-within:opacity-30 uppercase tracking-widest">Required</div>
-                            </div>
-                            <div className="relative group">
-                               <textarea rows="3" placeholder="BRIEF..." className="w-full bg-transparent border-b-2 border-black/5 focus:border-accent py-4 outline-none text-xs font-black uppercase tracking-widest transition-all placeholder:opacity-20 resize-none" />
-                               <div className="absolute top-0 right-0 text-[7px] font-mono opacity-0 group-focus-within:opacity-30 uppercase tracking-widest">Message_Body</div>
-                            </div>
-                         </div>
-                         <button type="button" className="group flex items-center gap-6 py-6 px-10 bg-black text-white rounded-xl hover:bg-accent transition-all duration-500 hover:scale-[1.02] shadow-2xl">
-                            <span className="text-[10px] font-black uppercase tracking-[0.4em]">Execute_Request</span>
-                            <div className="w-8 h-px bg-white/30 group-hover:w-12 transition-all"></div>
-                         </button>
-                      </form>
-                   </div>
+                  {/* Presence Slices */}
+                  <div className="flex flex-col gap-10">
+                    <span className="text-[9px] font-black uppercase tracking-widest opacity-20">Digital_Presence</span>
+                    <div className="flex flex-col gap-4">
+                      {[
+                        { name: 'GitHub', id: 'gh-link', label: 'Source_Control' },
+                        { name: 'LinkedIn', id: 'li-link', label: 'Network_Professional' },
+                        { name: 'Twitter', id: 'tw-link', label: 'Public_Broadcast' }
+                      ].map(link => (
+                        <a key={link.id} href="#" className="group flex items-center justify-between py-4 border-b border-black/5 hover:border-accent transition-all duration-500">
+                          <div className="flex flex-col">
+                            <span className="text-sm font-bold uppercase tracking-widest group-hover:text-accent transition-colors">{link.name}</span>
+                            <span className="text-[7px] font-mono opacity-20 uppercase tracking-[0.3em] font-black translate-y-1 group-hover:translate-y-0 group-hover:opacity-60 transition-all">{link.label}</span>
+                          </div>
+                          <svg className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Terminal Form */}
+                  <div className="flex flex-col gap-10">
+                    <span className="text-[9px] font-black uppercase tracking-widest opacity-20">Inquiry_Buffer</span>
+                    <form className="space-y-8">
+                      <div className="space-y-4">
+                        <div className="relative group">
+                          <input type="text" placeholder="ID // EMAIL" className="w-full bg-transparent border-b-2 border-black/5 focus:border-accent py-4 outline-none text-xs font-black uppercase tracking-widest transition-all placeholder:opacity-20" />
+                          <div className="absolute top-0 right-0 text-[7px] font-mono opacity-0 group-focus-within:opacity-30 uppercase tracking-widest">Required</div>
+                        </div>
+                        <div className="relative group">
+                          <textarea rows="3" placeholder="BRIEF..." className="w-full bg-transparent border-b-2 border-black/5 focus:border-accent py-4 outline-none text-xs font-black uppercase tracking-widest transition-all placeholder:opacity-20 resize-none" />
+                          <div className="absolute top-0 right-0 text-[7px] font-mono opacity-0 group-focus-within:opacity-30 uppercase tracking-widest">Message_Body</div>
+                        </div>
+                      </div>
+                      <button type="button" className="group flex items-center gap-6 py-6 px-10 bg-black text-white rounded-xl hover:bg-accent transition-all duration-500 hover:scale-[1.02] shadow-2xl">
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em]">Execute_Request</span>
+                        <div className="w-8 h-px bg-white/30 group-hover:w-12 transition-all"></div>
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
 
@@ -815,12 +891,12 @@ export default function Home() {
 
             {/* Terminal Decorations */}
             <div className="mt-32 pt-12 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-8 opacity-20">
-               <div className="flex items-center gap-6 text-[8px] font-mono font-black uppercase tracking-widest">
-                  <span>Port_8080: Open</span>
-                  <span>Protocol: SSH_JS</span>
-                  <span>Encryption: 256_AES</span>
-               </div>
-               <span className="text-[8px] font-mono font-black uppercase tracking-widest">Inbound_Session_001_Active</span>
+              <div className="flex items-center gap-6 text-[8px] font-mono font-black uppercase tracking-widest">
+                <span>Port_8080: Open</span>
+                <span>Protocol: SSH_JS</span>
+                <span>Encryption: 256_AES</span>
+              </div>
+              <span className="text-[8px] font-mono font-black uppercase tracking-widest">Inbound_Session_001_Active</span>
             </div>
           </div>
         </section>
@@ -862,12 +938,12 @@ export default function Home() {
                   <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent opacity-80">Status Update</span>
                   <div className="flex flex-col space-y-4">
                     <div className="flex items-center gap-3">
-                       <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
-                       <span className="text-xs font-bold uppercase tracking-widest opacity-80">Active // Remote</span>
+                      <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                      <span className="text-xs font-bold uppercase tracking-widest opacity-80">Active // Remote</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                       <span className="text-[9px] font-mono opacity-30 uppercase">Local Time (IST)</span>
-                       <span className="text-xs font-mono font-bold text-accent">{time}</span>
+                      <span className="text-[9px] font-mono opacity-30 uppercase">Local Time (IST)</span>
+                      <span className="text-xs font-mono font-bold text-accent">{time}</span>
                     </div>
                   </div>
                 </div>
@@ -877,12 +953,12 @@ export default function Home() {
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent opacity-80">Social Hub</span>
                 <div className="flex gap-4">
                   {[
-                    { id: 'GH', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg> },
-                    { id: 'LI', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.154z"/></svg> },
+                    { id: 'GH', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg> },
+                    { id: 'LI', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.154z" /></svg> },
                   ].map(social => (
-                    <motion.a 
-                      key={social.id} 
-                      href="#" 
+                    <motion.a
+                      key={social.id}
+                      href="#"
                       whileHover={{ y: -5, scale: 1.1, backgroundColor: 'var(--accent)', color: 'white' }}
                       className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center bg-white/5 transition-all duration-300 shadow-sm text-white"
                     >
@@ -896,20 +972,20 @@ export default function Home() {
             {/* Bottom Credit Line */}
             <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex items-center gap-4 text-[9px] font-black uppercase tracking-widest opacity-20">
-                 <span>© 2024</span>
-                 <div className="w-1 h-1 rounded-full bg-white/20"></div>
-                 <span>Engineered by Charan Raj B</span>
+                <span>© 2024</span>
+                <div className="w-1 h-1 rounded-full bg-white/20"></div>
+                <span>Engineered by Charan Raj B</span>
               </div>
-              
+
               <div className="flex items-center gap-8 font-mono text-[9px] font-bold uppercase tracking-[0.2em] opacity-30">
-                 <div className="flex gap-2">
-                    <span className="text-accent">VER</span>
-                    <span>4.0.2_KINETIC</span>
-                 </div>
-                 <div className="hidden md:flex gap-2">
-                    <span className="text-accent">LOC</span>
-                    <span>12.9716° N // 77.5946° E</span>
-                 </div>
+                <div className="flex gap-2">
+                  <span className="text-accent">VER</span>
+                  <span>4.0.2_KINETIC</span>
+                </div>
+                <div className="hidden md:flex gap-2">
+                  <span className="text-accent">LOC</span>
+                  <span>12.9716° N // 77.5946° E</span>
+                </div>
               </div>
             </div>
           </div>
