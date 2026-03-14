@@ -183,6 +183,7 @@ export default function Home() {
       <Head>
         <title>Charan Raj B | Full Stack Developer</title>
         <meta name="description" content="High-performance full-stack engineer and digital architect." />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <AnimatePresence mode="wait">
@@ -693,7 +694,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Carousel Track */}
           <div
             className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-10 px-6 md:px-10 pb-16 [&::-webkit-scrollbar]:hidden"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
